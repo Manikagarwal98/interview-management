@@ -1,0 +1,35 @@
+body{
+   background: linear-gradient(#3800e7, #8a15ff );
+  height: 100vh;
+  overflow:hidden;
+}
+.mnk{
+  display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+}
+
+.set{
+  width: 20%;
+  text-align: center;
+}
+
+.main_sec{
+  width:80%;
+  margin: auto;
+  background-color: white;
+}
+.tab-content{
+  padding: 5%;
+}
+.date_time{
+  display: flex;
+}
+.box{
+  padding: 5px;
+  margin: 5px;
+}
+.Interview{
+  display: flex;
+   justify-content: space-around;
+}

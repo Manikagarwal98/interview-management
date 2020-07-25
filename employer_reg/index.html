@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="employer_reg.css">
+    <title>Registation Page</title>
+  </head>
+  <body>
+    <div id="page">
+    <form id="main" onSubmit = "return checkPassword(this)">
+      <h1 class="title">Company Registation</h1>
+      <div class="form-group">
+          <label for="CompanyName">Company Name</label>
+          <input type="text" class="form-control" id="c_name" placeholder="Enter Company Name" required>
+      </div>
+      <div class="form-group">
+          <label for="Address" >Company Address</label>
+          <textarea class="form-control" placeholder="Address.." id="address" required rows="3"></textarea>
+      </div>
+      <div class="form-group">
+          <label for="HR_fn">First Name</label>
+          <input type="text" class="form-control" id="HR_fn" placeholder="Enter First Name" required>
+      </div>
+
+      <div class="form-group">
+          <label for="HR_ln">Last Name</label>
+          <input type="text" class="form-control" id="HR_ln" placeholder="Enter Last Name" required>
+     </div>
+     <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email" required>
+          <small id="email" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+          <label for="Password">Create Password</label>
+          <input type="password" class="form-control" name="password1" minlength="6" id="password1"placeholder="Enter Password" required>
+    </div>
+    <div class="form-group">
+          <label for="password">Confirm Password</label>
+          <input type="password" class="form-control" name="password2" id="password2" minlength="6" placeholder="Re-enter Password" required>
+    </div>
+
+  <button type="submit" id="btn" class="btn btn-primary" >verify email</button>
+  <div id="msg">
+             <pre></pre>
+         </div>
+</form>
+<div id="msg">
+           <pre></pre>
+       </div>
+</div>
+</body>
+<script>
+
+         function checkPassword(form) {
+             password1 = form.password1.value;
+             password2 = form.password2.value;
+
+            if (password1 != password2) {
+                 alert ("\nPassword did not match: Please try again...")
+                 return false;
+             }
+
+             else{
+                 return false;
+             }
+         }
+     </script>
+     <script>
+       let emp_data = [];
+
+       const add_emp = (ev)=>{
+           ev.preventDefault();  //to stop the form submitting
+           let details = {
+               'name': document.getElementById('c_name').value,
+               'address': document.getElementById('address').value,
+               'hrFirstName':document.getElementById('HR_fn').value,
+               'hrLastName':document.getElementById('HR_ln').value,
+               'email':document.getElementById('Email').value,
+               'password':document.getElementById('password1').value,
+               'cpassword':document.getElementById('password2').value
+             }
+           emp_data.push(details);
+
+           console.warn('added' , {emp_data} );
+           const options ={
+             method:"POST",
+		 headers: {
+      'Content-Type': 'application/json'
+
+    },
+             body: JSON.stringify(details)
+           };
+           fetch('https://hr502.herokuapp.com/registerCompany', options)
+           .then(function(response) {
+             return response.json();
+           }).then(function(text){
+             console.log(text);
+             let errString = ("Please enter following fields: \n");
+             if(typeof(text.msg) === 'undefined' )
+              {
+               for(let err of text.errors){
+               console.log(err.msg);
+               errString += err.msg +", ";
+             }
+                alert(errString);
+              }
+              else{
+                alert("verification mail is sent to Your Email")
+              }
+           })
+      };
+      document.addEventListener('DOMContentLoaded', ()=>{
+           document.getElementById('btn').addEventListener('click', add_emp);
+      });
+
+</script>
+</html>

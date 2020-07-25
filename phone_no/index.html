@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="employer_reg.css">
     <title></title>
@@ -13,11 +15,11 @@
         <label for="number">Mobile Number</label>
         <input type="tel" maxlength="10" class="form-control" id="phone"  placeholder="Enter Mobile Number" required>
     </div>
-    <button type="button" class="btn btn-primary"  onclick="myFunction()">Send OTP</button>
+    <button type="button" id="btn" class="btn btn-primary"  onclick="myFunction()">Send OTP</button>
     <div id="OTP">
     <div class="form-group">
         <label for="OTP">OTP</label>
-        <input type="text" class="form-control"  id="code" placeholder="Enter 6 digit OTP" required>
+        <input type="number" class="form-control" id="code" placeholder="Enter 4 digit OTP" required>
     </div>
     <button type="submit"  id="btn1" class="btn btn-primary" >Register</button>
     </div>
@@ -42,42 +44,87 @@
 
     </script>
     <script>
-      let emp_data = [];
+      let phoneNo = [];
 
-      const add_emp = (ev)=>{
+      const add_pn = (ev)=>{
           ev.preventDefault();  //to stop the form submitting
-          let details = {
-            "code": document.getElementById('code').value,
-            "mobileNo": document.getElementById('phone').value,
-            "token":  getToken.substring(getToken.indexOf('=') + 1)
+          let detail = {
+
+            "phoneNo": document.getElementById('phone').value
 
 
             }
-          emp_data.push(details);
+          phoneNo.push(detail);
 
-          console.warn('added' , {emp_data} );
-          const options ={
+          console.warn('added' , {phoneNo} );
+          const option ={
             method:"POST",
     headers: {
      'Content-Type': 'application/json'
      // 'Content-Type': 'application/x-www-form-urlencoded',
    },
-            body: JSON.stringify(details)
+            body: JSON.stringify(detail)
           };
-          fetch('https://hr502.herokuapp.com/postCode', options)
+          fetch('https://hr502.herokuapp.com/getMsg', option)
           .then(function(response) {
             return response.json();
           }).then(function(text){
             console.log('its working');
             console.log(text);
-          }) .catch(function(errors){
-             console.text.error(errors);
-           })
+          })
      };
      document.addEventListener('DOMContentLoaded', ()=>{
-          document.getElementById('btn1').addEventListener('click', add_emp);
+          document.getElementById('btn').addEventListener('click', add_pn);
      });
+     </script>
+     <script>
+     let emp_data = [];
 
+     const add_emp = (ev)=>{
+         ev.preventDefault();  //to stop the form submitting
+         let details = {
+           "code": document.getElementById('code').value,
+           "mobileNo": document.getElementById('phone').value,
+           "token":  getToken.substring(getToken.indexOf('=') + 1)
+
+
+           }
+         emp_data.push(details);
+
+         console.warn('added' , {emp_data} );
+         const options ={
+           method:"POST",
+     headers: {
+     'Content-Type': 'application/json'
+     // 'Content-Type': 'application/x-www-form-urlencoded',
+     },
+           body: JSON.stringify(details)
+         };
+         fetch('https://hr502.herokuapp.com/postCode', options)
+         .then(function(response) {
+           return response.json();
+         }).then(function(text){
+           console.log('its working');
+           console.log(text.msg);
+          if(text.msg === 'Looks like wrong code'){
+            alert('OTP is Incorrect');
+            document.getElementById('code').value == 'NULL';
+          }
+          else if (typeof(text.msg) === 'undefined') {
+            alert('OTP length inappropriate')
+          }
+           else{
+             alert('Company Registered Successfully');
+           window.location.replace("https://manikagarwal98.github.io/interview-management/employer_login");
+
+         }
+         }) .catch(function(errors){
+            console.text.error(errors);
+          })
+     };
+     document.addEventListener('DOMContentLoaded', ()=>{
+         document.getElementById('btn1').addEventListener('click', add_emp);
+     });
 </script>
   </body>
 </html>
