@@ -75,7 +75,8 @@
           <a
             class="nav-item nav-link set"
             id="logout"
-            onclick="logout()"
+            onclick='logout()'
+            href="#"
             >Logout</a
           >
         </div>
@@ -291,9 +292,6 @@
     document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("Interviewer_btn").addEventListener("click", add_itvr);
     });
-    function logout() {
-      localStorage.clear();
-    }
   </script>
   <script>
     let emp_data = [];
