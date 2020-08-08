@@ -21,7 +21,7 @@
          <div class="dropdown1">
            <button class="dropbtn1">Company</button>
            <div class="dropdown-content1">
-             <a onclick=emp_register()>Register</a>
+             <a id="reg">Register</a>
              <a onclick=emp_login>Login</a>
            </div>
            </div>
@@ -35,10 +35,9 @@
 </section>
   </body>
   <script>
-  function emp_register(){
+ 
   var emp_reg = (window.location.protocol + "//" + window.location.host + "/" + window.location.pathname + "/employer_reg.html")                  
-  window.location.replace(emp_reg);
-  }
+ document.getElementsById("reg").setAttribute("href", emp_reg);
   function emp_login(){
   var emp_log = (window.location.protocol + "//" + window.location.host + "/" + window.location.pathname + "/employer_login.html")                  
   window.location.replace(emp_login);
