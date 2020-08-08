@@ -8,7 +8,7 @@
     <script>
       if(localStorage.getItem('interviewerId') != null) {
         var intv_db = (window.location.protocol + "//" + window.location.host + "/interview-management/interviewer_dashboard.html");
-        window.location.replace(intv_dv);
+        window.location.replace(intv_db);
 
       }
     </script>
@@ -64,7 +64,7 @@
             localStorage.setItem("interviewerId",text.interviewerId);
             localStorage.setItem("intv_token",text.token);
             var intv_db = (window.location.protocol + "//" + window.location.host + "/interview-management/interviewer_dashboard.html");
-            window.location.replace(intv_dv);
+            window.location.replace(intv_db);
           }
           else if (text.status==='Failed') {
             alert(text.msg);
