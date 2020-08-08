@@ -19,17 +19,23 @@
          <div class="dropdown1">
            <button class="dropbtn1">Company</button>
            <div class="dropdown-content1">
-             <a href="employer_reg.html">Register</a>
+             <a onclick=url()>Register</a>
              <a href="employer_login.html">Login</a>
            </div>
            </div>
    <div class="dropdown2">
 <button class="dropbtn2">Interviewer</button>
  <div class="dropdown-content2">
- <a href="interviewer_login.html">Login</a>
+ <a onclick=url()>Login</a>
 </div>
 </div>
 <div>
 </section>
   </body>
+  <script>
+  function url(){
+  var emp_reg = (window.location.protocol + "//" + window.location.host + "/" + window.location.pathname + "/employer_reg.html")                  
+  window.location.replace(emp_reg);
+  }
+  </script>
 </html>
