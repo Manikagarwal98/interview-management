@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="interviewer_dashboard.css">
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <title></title>
+  </head>
+  <body>
+    <div class="main_sec">
+    <nav>
+      <div class="nav nav-tabs mnk" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active set" id="nav-view-tab" data-toggle="tab" href="#nav-view" aria-controls="nav-view" aria-selected="true">View</a>
+        <a class="nav-item nav-link set" id="logout"  onclick="logout()" href="interviewer_login.html">Logout</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-view" role="tabpanel" aria-labelledby="nav-view-tab">
+      <div class="form-group">
+          <label>Select Interview for</label>
+          <select class="form-control" id="jb_av" required>
+            <option value="" selected disabled>Please select</option>
+          </select>
+      </div>
+
+      <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Applied For</th>
+          <th>Source</th>
+          <th>Application Status</th>
+          <th>Email</th>
+          <th>phone no.</th>
+          <th>current Designation</th>
+          <th>Address</th>
+          <th>Current CTC</th>
+          <th>Expected CTC</th>
+          <th>Notice Period</th>
+          <th>Skills</th>
+          <th>CV link</th>
+          <th>Feedback</th>
+        </tr>
+      </thead>
+
+      <tbody id="tableData"></tbody>
+    </table></div>
+      </div>
+    </div>
+    <div class="dis">
+      <div class="discription-container">
+        <h3>Feedback</h3>
+        <form class="feed">
+          <div class="form-group">
+              <label for="Status">Status</label>
+          <select class="form-control" id='status' required>
+            <option value="" selected>please Select</option>
+            <option>Shortlisted</option>
+            <option>Rejected</option>
+            <option>In-process</option>
+            <option>On hold</option>
+          </select>
+        </div>
+          <div class="form-group">
+              <label for="remark" >Feedback</label>
+              <textarea class="form-control" placeholder="Any remark.." id="remark" rows="3"></textarea>
+          </div>
+          <button type="submit" id='feed_btn' class="btn btn-primary close-btn" >Submit</button>
+        </form>
+      </div>
+    </div>
+	<script>
+  var cndt_id;
+  function fun(id) {
+const disBtn1 = document.querySelector(".dis-btn");
+const dis1 = document.querySelector(".dis");
+const closeBtn = document.querySelectorAll(".close-btn");
+console.log(id.getAttribute("data"));
+cndt_id = id.getAttribute("data");
+console.log(cndt_id);
+  dis1.classList.add("open-dis");
+closeBtn[0].addEventListener("click", function () {
+  dis1.classList.remove("open-dis");
+});}
+  </script>
+</body>
+<script>
+const options ={
+method:"GET",
+headers: {
+  authorization: "bearer " + localStorage.getItem("intv_token")
+}
+};
+fetch('https://hr502.herokuapp.com/interviewer/getMyProfiles',options)
+  .then(function(response) {
+    return response.json();
+  }).then(function(text){
+    console.log(text.profile);
+    console.log(text.profile.length);
+    for (const val of text.profile) {
+      var option = document.createElement("option");
+      option.value = val;
+      option.text = val;
+      document.getElementById("jb_av").appendChild(option);
+    }
+  })
+</script>
+<script>
+
+function logout() {
+window.localStorage.removeItem('intv_token');
+window.localStorage.removeItem('interviewerId');
+}
+</script>
+<script>
+var activities = document.getElementById("jb_av");
+activities.addEventListener("change", function () {
+renderData();
+
+});
+window.onload = () => {
+      renderData();
+    };
+function renderData() {
+let emp_data = [];
+  let details = {
+    profile:document.getElementById('jb_av').value
+  };
+  emp_data.push(details);
+
+const tbl = {
+  method: "POST",
+  headers: {
+      "Content-Type": "application/json",
+    authorization: "bearer " + localStorage.getItem("intv_token"),
+  },  body: JSON.stringify(details),
+};
+fetch("https://hr502.herokuapp.com/intervier/get/applications", tbl)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (text) {
+    console.log(text);
+    window.onload = () => {
+      loadTableData(text);
+    };
+    loadTableData(text);
+    function loadTableData(text, selectedSource) {
+      const tableBody = document.getElementById("tableData");
+      let dataHtml = "";
+      for (let person of text) {
+console.log(text);
+console.log(person._id);
+            dataHtml +=
+            "<tr><td>" +
+            person.fname +
+            " " +
+            person.lname +
+            "</td><td>" +
+            person.jobName +
+            "</td><td>" +
+            person.source +
+            "</td><td>" +
+            person.status +
+            "</td><td>" +
+            person.email +
+            "</td><td>" +  person.mobileNo +  "</td><td>" + person.currentDesignation +  "</td><td>" + person.address + "</td><td>" + person.cCTC +"</td><td>" +
+            person.eCTC +  "</td><td>" +  person.noticePeriod +"</td><td>" + person.skills +  "</td><td>" + person.resumeUrl +`</td><td><button class='dis-btn' data=${person._id} onclick='fun(this)'>feedback</button></td><td>`+ "</td></tr>";
+        }
+      console.log(dataHtml);
+
+      tableBody.innerHTML = dataHtml;
+    }
+  });}
+</script>
+<script>
+  let feed_data = [];
+
+  const add_feed = (ev) => {
+    ev.preventDefault(); //to stop the form submitting
+    let ids = {
+      status: document.getElementById("status").value,
+      feedback: document.getElementById("remark").value,
+      applicatantId: cndt_id
+    };
+    feed_data.push(ids);
+
+    console.warn("added", { feed_data });
+    const opt = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: "bearer " + localStorage.getItem("intv_token"),
+      },
+      body: JSON.stringify(ids),
+    };
+    fetch("https://hr502.herokuapp.com/interviewer/post/review", opt)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (text) {
+        console.log(text);
+      });
+  };
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("feed_btn").addEventListener("click", add_feed);
+  });
+</script>
+</html>

@@ -1,133 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="employer_dashboard.css">
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <title></title>
+    <link rel="stylesheet" href="home.css">
+      <meta charset="utf-8">
+      <title>home page</title>
   </head>
   <body>
-    <div class="main_sec">
-    <nav>
-      <div class="nav nav-tabs mnk" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active set" id="nav-view-tab" data-toggle="tab" href="#nav-view" role="tab" aria-controls="nav-view" aria-selected="true">View</a>
-        <a class="nav-item nav-link set" id="nav-Status-tab" data-toggle="tab" href="#nav-Status" role="tab" aria-controls="nav-Status" aria-selected="false">Status</a>
-        <a class="nav-item nav-link set" id="nav-Create-tab" data-toggle="tab" href="#nav-Create" role="tab" aria-controls="nav-Create" aria-selected="false">Create Interview</a>
-        <a class="nav-item nav-link set" id="nav-Interviewer-tab" data-toggle="tab" href="#nav-Interviewer" role="tab" aria-controls="nav-Interviewer" aria-selected="false">Interviewer</a>
-        <a class="nav-item nav-link set" id="logout" onclick="logout()" href="https://manikagarwal98.github.io/interview-management/employer_login">Logout</a>
-      </div>
-    </nav>
-    <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-view" role="tabpanel" aria-labelledby="nav-view-tab">...</div>
-    <div class="tab-pane fade" id="nav-Status" role="tabpanel" aria-labelledby="nav-Status-tab">.</div>
-    <div class="tab-pane fade" id="nav-Create" role="tabpanel" aria-labelledby="nav-Create-tab">
-      <form>
-          <div class="form-group">
-            <label for="post">Vacancy for</label>
-            <input type="text" class="form-control" id='vac_for' placeholder="Vacancy for Post..." required>
-          </div>
-          <div class="form-group">
-            <label for="post">No. of Vacancy</label>
-            <input type="number" class="form-control"id="no_v" placeholder="no..">
-          </div>
-          <div class="form-group">
-            <label for="skills">Skills</label>
-            <input type="text" class="form-control" id="skills_req" placeholder="Skills required...">
-          </div>
-          <label for="post">Date</label>
-          <div class="form-group date_time">
-            <div class="box">
-              <label for="post">From</label>
-              <input type="date" id="d_from" class="form-control" required>
-            </div>
-            <div class="box">
-              <label for="post">To</label>
-              <input type="date" id="d_to" class=" form-control" required>
-            </div>
-          </div>
-          <label for="post">Time</label>
-          <div class="form-group date_time">
-            <div class="box">
-              <label for="post">From</label>
-              <input type="time" id="t_from" class="form-control" required>
-            </div>
-            <div class="box">
-              <label for="post">To</label>
-              <input type="time" id="t_to" class="form-control" required>
-            </div>
-          </div>
-          <button type="submit" id="btn" class="btn btn-primary">Submit</button>
-      </form>
+    <div>
     </div>
-    <div class="tab-pane fade " id="nav-Interviewer" role="tabpanel" aria-labelledby="nav-Interviewer-tab">
-      <ul class="nav nav-pills Interview" id="pills-tab" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" id="create-tab" data-toggle="pill" href="#create" role="tab" aria-controls="pills-home" aria-selected="true">Create</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="Manage-tab" data-toggle="pill" href="#Manage" role="tab" aria-controls="pills-profile" aria-selected="false">Manage</a>
-        </li>
-      </ul>
-      <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="create" role="tabpanel" aria-labelledby="create-tab">
-          <form>
-            <div class="form-group">
-                 <label for="Email">Email address</label>
-                 <input type="email" class="form-control" required id="Email" aria-describedby="emailHelp" placeholder="Enter email">
+    <section class="container">
+    <div class="col text">
+				 <h1 class="t1">
+ 					<span class="interview">Interview</span><br>
+ 					<span class="Management">Management System</span>
+ 				</h1>
+ 				</div>
+        <div>
+         <div class="dropdown1">
+           <button class="dropbtn1">Company</button>
+           <div class="dropdown-content1">
+             <a href="employer_reg.html">Register</a>
+             <a href="employer_login.html">Login</a>
            </div>
-           <button type="submit" class="btn btn-primary">Create</button>
-          </form>
-        </div>
-        <div class="tab-pane fade" id="Manage" role="tabpanel" aria-labelledby="Manage-tabtab">...</div>
-
-      </div>
-    </div>
-  </div>
+           </div>
+   <div class="dropdown2">
+<button class="dropbtn2">Interviewer</button>
+ <div class="dropdown-content2">
+ <a href="interviewer_login.html">Login</a>
 </div>
-</body>
-<script>
-  let emp_data = [];
-
-  const add_emp = (ev)=>{
-      ev.preventDefault();  //to stop the form submitting
-      let details = {
-          'jobName': document.getElementById('vac_for').value,
-          'vacancy': document.getElementById('no_v').value,
-          'skills':document.getElementById('skills_req').value,
-          'datefrom':document.getElementById('d_from').value,
-          'dateto':document.getElementById('d_to').value,
-          'timefrom':document.getElementById('t_from').value,
-          'timeto':document.getElementById('t_to').value
-        }
-      emp_data.push(details);
-
-      console.warn('added' , {emp_data} );
-      const options ={
-        method:"POST",
-headers: {
- 'Content-Type': 'application/json',
- 'authorization':"bearer " + localStorage.getItem('token')
-},
-        body: JSON.stringify(details)
-      };
-      fetch('https://hr502.herokuapp.com/addJobs', options)
-      .then(function(response) {
-        return response.json();
-      }).then(function(text){
-        console.log(text);
-      console.log(localStorage.getItem('token'));
-        console.log('working');
-       })
- };
- document.addEventListener('DOMContentLoaded', ()=>{
-      document.getElementById('btn').addEventListener('click', add_emp);
- });
-function logout(){
-  localStorage.clear();
-}
-</script>
+</div>
+<div>
+</section>
+  </body>
 </html>
