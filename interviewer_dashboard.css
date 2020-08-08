@@ -1,0 +1,97 @@
+body{
+  background: linear-gradient(#3800e7, #8a15ff );
+  height: 100vh;
+
+}
+.mnk{
+  display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+}
+
+.set{
+  width: 25%;
+  text-align: center;
+}
+
+.main_sec{
+  width:80%;
+  margin: auto;
+  background-color: white;
+}
+.tab-content{
+  padding: 5%;
+}
+.date_time{
+  display: flex;
+}
+.box{
+  padding: 5px;
+  margin: 5px;
+}
+.Interview{
+  display: flex;
+   justify-content: space-around;
+}
+table{
+  font-family: arial;
+  border-collapse: collapse;
+
+}
+td, th{
+  border:1px solid #cccccc;
+  padding:5px;
+}
+th{
+  font-weight: bold;
+
+}
+#nav-view{
+  overflow: scroll;
+}
+#invite_link{
+  width: inherit;
+  border: 1px solid grey;
+  padding:5px;
+
+}
+#jb_av{
+  width: auto;
+}
+#invt{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width:100%;
+
+}
+#invt>h4{
+    width:auto;
+}
+.dis{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(73, 166, 233, 0.5);
+  display: grid;
+  place-items: center;
+  transition: all 0.3s linear;
+  visibility: hidden;
+  z-index: -10;
+}
+.open-dis{
+  visibility: visible;
+  z-index: 10;
+}
+.discription-container {
+    background:  #fff;
+    border-radius: 0.5rem;
+    width: 50%;
+    padding: 3%;
+    text-align: center;
+}
+.feed{
+  text-align: left;
+}

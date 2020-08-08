@@ -9,7 +9,7 @@
   <body>
     <div>
     </div>
-	
+
     <section class="container">
     <div class="col text">
 				 <h1 class="t1">
@@ -22,7 +22,7 @@
            <button class="dropbtn1">Company</button>
            <div class="dropdown-content1">
              <a onclick=emp_register()>Register</a>
-             <a onclick=emp_login>Login</a>
+             <a onclick=emp_login()>Login</a>
            </div>
            </div>
    <div class="dropdown2">
@@ -36,15 +36,15 @@
   </body>
   <script>
   function emp_register(){
-  var emp_reg = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_reg.html");                
+  var emp_reg = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_reg.html");
   window.location.replace(emp_reg);
   }
   function emp_login(){
-  var emp_log = (window.location.protocol + "//" + window.location.host + "/interview_management/employer_login.html");                
-  window.location.replace(emp_login);
+  var emp_log = (window.location.protocol + "//" + window.location.host + "/interview_management/employer_login.html");
+  window.location.replace(emp_log);
   }
   function intv_login(){
-  var intv_log = (window.location.protocol + "//" + window.location.host + "/interview-management/interviewer_login.html");                
+  var intv_log = (window.location.protocol + "//" + window.location.host + "/interview-management/interviewer_login.html");
   window.location.replace(intv_log);
   }
   </script>

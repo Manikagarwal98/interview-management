@@ -27,7 +27,8 @@
     <script>
 
       if(localStorage.getItem('token') == null) {
-         window.location.replace("employer_login.html");
+        var emp_log = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_login.html");
+         window.location.replace(emp_log);
       }
 
 
@@ -75,7 +76,6 @@
             class="nav-item nav-link set"
             id="logout"
             onclick="logout()"
-            href="employer_login.html"
             >Logout</a
           >
         </div>
@@ -286,7 +286,6 @@
         .then(function (text) {
           console.log(text);
           console.log(localStorage.getItem("token"));
-          console.log("working");
         });
     };
     document.addEventListener("DOMContentLoaded", () => {
@@ -335,7 +334,10 @@
       document.getElementById("btn").addEventListener("click", add_emp);
     });
     function logout() {
-      localStorage.clear();
+      window.localStorage.removeItem('token');
+      window.localStorage.removeItem('companyId');
+      var emp_log = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_login.html");
+      window.location.replace(emp_login);
     }
   </script>
   <script>

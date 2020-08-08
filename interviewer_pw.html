@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="employer_reg.css">
+
+    <title></title>
+  </head>
+  <body>
+    <div id="main" style="width:50%">
+    <form onSubmit = "return checkPassword(this)">
+      <h1 class="title">Email verified !!</h1>
+      <div class="form-group">
+           <label for="password">Create Password</label>
+           <input type="password" class="form-control" name="password1" placeholder="Password" required>
+           </div>
+     <div class="form-group">
+           <label for="Password">Confirm Password</label>
+           <input type="password" class="form-control" id="password" name="password2" placeholder="Re-enter Password" required>
+     </div>
+     <a href="#" style="float:right">forgot password?</a>
+       <button type="submit" id="btn" class="btn btn-primary" >Confirm</button>
+    </form>
+    </div>
+  </body>
+  <script>
+
+           function checkPassword(form) {
+               password1 = form.password1.value;
+               password2 = form.password2.value;
+
+              if (password1 != password2) {
+                   alert ("\nPassword did not match: Please try again...")
+                   return false;
+               }
+
+               // If same return True.
+               else{
+                   return true;
+               }
+           }
+       </script>
+       <script>
+       var getToken = window.location.search.slice(1);
+       console.log(getToken);
+
+       console.log(getToken.substring(getToken.indexOf('=') + 1));
+
+        let emp_data = [];
+
+         const add_emp = (ev)=>{
+             ev.preventDefault();  //to stop the form submitting
+             let details = {
+                 'token': getToken.substring(getToken.indexOf('=') + 1),
+                 'password': document.getElementById('password').value
+
+               }
+           emp_data.push(details);
+
+           console.warn('added' , {emp_data} );
+           const options ={
+             method:"POST",
+             headers: {
+               'Content-Type': 'application/json'
+
+             },
+               body: JSON.stringify(details)
+             };
+             fetch('https://hr502.herokuapp.com/interviewer/register', options)
+             .then(function(response) {
+               return response.json();
+             }).then(function(text){
+               console.log('its working');
+               console.log(text);
+               if(text.status=== 'OK'){
+                 alert("you r registered");
+                 var intv_log = (window.location.protocol + "//" + window.location.host + "/interview_management/interviewer_login.html");
+                 window.location.replace(intv_login);
+               }
+
+             })
+           };
+           document.addEventListener('DOMContentLoaded', ()=>{
+           document.getElementById('btn').addEventListener('click', add_emp);
+         });
+       </script>
+</html>
