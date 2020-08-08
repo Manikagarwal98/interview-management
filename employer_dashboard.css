@@ -1,0 +1,70 @@
+body{
+  background: linear-gradient(#3800e7, #8a15ff );
+  height: 100vh;
+  
+
+}
+.mnk{
+  display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+}
+
+.set{
+  width: 25%;
+  text-align: center;
+}
+
+.main_sec{
+  width:80%;
+  margin: auto;
+  background-color: white;
+}
+.tab-content{
+  padding: 5%;
+}
+.date_time{
+  display: flex;
+}
+.box{
+  padding: 5px;
+  margin: 5px;
+}
+.Interview{
+  display: flex;
+   justify-content: space-around;
+}
+table{
+  font-family: arial;
+  border-collapse: collapse;
+
+}
+td, th{
+  border:1px solid #cccccc;
+  padding:5px;
+}
+th{
+  font-weight: bold;
+
+}
+#nav-view{
+  overflow: scroll;
+}
+#invite_link{
+  width: inherit;
+  border: 1px solid grey;
+  padding:5px;
+  margin-left: 5px;
+
+}
+#invt{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  width:100%;
+
+}
+#invt>h4{
+    width:auto;
+}

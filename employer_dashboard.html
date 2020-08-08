@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="employer_dashboard.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+
+      if(localStorage.getItem('token') == null) {
+         window.location.replace("employer_login.html");
+      }
+
+
+    </script>
+    <title></title>
+  </head>
+  <body>
+    <div class="main_sec">
+      <div class="nav-item nav-link" id="invt">
+          <h4 style="width:15%;">Invite link:</h4>
+          <a href="#" id="invite_link">this is the link</a> </div>
+      <nav>
+        <div class="nav nav-tabs mnk" id="nav-tab" role="tablist">
+          <a
+            class="nav-item nav-link active set"
+            id="nav-view-tab"
+            data-toggle="tab"
+            href="#nav-view"
+            role="tab"
+            aria-controls="nav-view"
+            aria-selected="true"
+            >View</a
+          >
+          <a
+            class="nav-item nav-link set"
+            id="nav-Create-tab"
+            data-toggle="tab"
+            href="#nav-Create"
+            role="tab"
+            aria-controls="nav-Create"
+            aria-selected="false"
+            >Create Interview</a
+          >
+          <a
+            class="nav-item nav-link set"
+            id="nav-Interviewer-tab"
+            data-toggle="tab"
+            href="#nav-Interviewer"
+            role="tab"
+            aria-controls="nav-Interviewer"
+            aria-selected="false"
+            >Interviewer</a
+          >
+          <a
+            class="nav-item nav-link set"
+            id="logout"
+            onclick="logout()"
+            href="employer_login.html"
+            >Logout</a
+          >
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-view" role="tabpanel" aria-labelledby="nav-view-tab">
+          <div>
+            <label>Filter By: </label>
+            <select id="Fil_source">
+              <option value="" selected>Source</option>
+              <option>company website</option>
+              <option>Social Media</option>
+              <option>College</option>
+              <option>Company Employee</option>
+              <option>Other</option>
+            </select>
+            <select id="Fil_status">
+              <option value="" selected>Application Status</option>
+              <option>Shortlisted</option>
+              <option>Not Seen</option>
+              <option>Rejected</option>
+              <option>In-process</option>
+              <option>On hold</option>
+            </select>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Applied For</th>
+                <th>Source</th>
+                <th>Application Status</th>
+                <th>Email</th>
+                <th>phone no.</th>
+                <th>Current Designation</th>
+                <th>Feedback</th>
+                <th>Address</th>
+                <th>Current CTC</th>
+                <th>Expected CTC</th>
+                <th>Notice Period</th>
+                <th>Skills</th>
+                <th>CV link</th>
+              </tr>
+            </thead>
+
+            <tbody id="tableData"></tbody>
+          </table>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="nav-Create"
+          role="tabpanel"
+          aria-labelledby="nav-Create-tab"
+        >
+          <form>
+            <div class="form-group">
+              <label for="post">Vacancy for</label>
+              <input
+                type="text"
+                class="form-control"
+                id="vac_for"
+                placeholder="Vacancy for Post..."
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="post">No. of Vacancy</label>
+              <input
+                type="number"
+                class="form-control"
+                id="no_v"
+                placeholder="no.."
+              />
+            </div>
+            <div class="form-group">
+              <label for="skills">Skills</label>
+              <input
+                type="text"
+                class="form-control"
+                id="skills_req"
+                placeholder="Skills required..."
+              />
+            </div>
+            <label for="post">Date</label>
+            <div class="form-group date_time">
+              <div class="box">
+                <label for="post">From</label>
+                <input type="date" id="d_from" class="form-control" required />
+              </div>
+              <div class="box">
+                <label for="post">To</label>
+                <input type="date" id="d_to" class="form-control" required />
+              </div>
+            </div>
+            <label for="post">Time</label>
+            <div class="form-group date_time">
+              <div class="box">
+                <label for="post">From</label>
+                <input type="time" id="t_from" class="form-control" required />
+              </div>
+              <div class="box">
+                <label for="post">To</label>
+                <input type="time" id="t_to" class="form-control" required />
+              </div>
+            </div>
+            <button type="submit" id="btn" class="btn btn-primary">
+              Submit
+            </button>
+          </form>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="nav-Interviewer"
+          role="tabpanel"
+          aria-labelledby="nav-Interviewer-tab"
+        >
+          <ul class="nav nav-pills Interview" id="pills-tab" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="create-tab"
+                data-toggle="pill"
+                href="#create"
+                role="tab"
+                aria-controls="pills-home"
+                aria-selected="true"
+                >Create</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="Manage-tab"
+                data-toggle="pill"
+                href="#Manage"
+                role="tab"
+                aria-controls="pills-profile"
+                aria-selected="false"
+                >Manage</a
+              >
+            </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div
+              class="tab-pane fade show active"
+              id="create"
+              role="tabpanel"
+              aria-labelledby="create-tab"
+            >
+              <form>
+                <div class="form-group">
+                  <label for="Email">Email address</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    required
+                    id="int_email"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="Post">Post Applied for </label>
+                  <select class="form-control" id="jb_av" required>
+                    <option value="" selected disabled>Please select</option>
+                  </select>
+                </div>
+                <button type="submit" id="Interviewer_btn" class="btn btn-primary">Create</button>
+              </form>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="Manage"
+              role="tabpanel"
+              aria-labelledby="Manage-tabtab"
+            >
+              ...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let itvr_data = [];
+
+    const add_itvr = (ev) => {
+      ev.preventDefault(); //to stop the form submitting
+      let ids = {
+        email: document.getElementById("int_email").value,
+        profile: document.getElementById("jb_av").value
+      };
+      emp_data.push(ids);
+
+      console.warn("added", { itvr_data });
+      const opt = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "bearer " + localStorage.getItem("token"),
+        },
+        body: JSON.stringify(ids),
+      };
+      fetch("https://hr502.herokuapp.com/company/add/interviewer", opt)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (text) {
+          console.log(text);
+          console.log(localStorage.getItem("token"));
+          console.log("working");
+        });
+    };
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("Interviewer_btn").addEventListener("click", add_itvr);
+    });
+    function logout() {
+      localStorage.clear();
+    }
+  </script>
+  <script>
+    let emp_data = [];
+
+    const add_emp = (ev) => {
+      ev.preventDefault(); //to stop the form submitting
+      let details = {
+        jobName: document.getElementById("vac_for").value,
+        vacancy: document.getElementById("no_v").value,
+        skills: document.getElementById("skills_req").value,
+        datefrom: document.getElementById("d_from").value,
+        dateto: document.getElementById("d_to").value,
+        timefrom: document.getElementById("t_from").value,
+        timeto: document.getElementById("t_to").value,
+      };
+      emp_data.push(details);
+
+      console.warn("added", { emp_data });
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "bearer " + localStorage.getItem("token"),
+        },
+        body: JSON.stringify(details),
+      };
+      fetch("https://hr502.herokuapp.com/addJobs", options)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (text) {
+          console.log(text);
+          console.log(localStorage.getItem("token"));
+          console.log("working");
+        });
+    };
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("btn").addEventListener("click", add_emp);
+    });
+    function logout() {
+      localStorage.clear();
+    }
+  </script>
+  <script>
+
+    const ddown = {
+      method: "GET",
+    };
+    fetch(
+      "https://hr502.herokuapp.com/comapanyjobs" +
+        localStorage.getItem("companyId"),
+      ddown
+    )
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (text) {
+        console.log(text.length);
+        let arr = [];
+        for (let i = 0; i < text.length; i++) {
+          arr.push(text[i].jobName);
+        }
+        console.log(arr);
+        for (const val of arr) {
+          var option = document.createElement("option");
+          option.value = val;
+          option.text = val;
+          document.getElementById("jb_av").appendChild(option);
+        }
+      });
+  </script>
+  <script>
+    var activities = document.getElementById("Fil_source");
+    var activitie = document.getElementById("Fil_status");
+    activities.addEventListener("change", function () {
+      renderData();
+    });
+    activitie.addEventListener("change", function () {
+      renderData();
+    });
+	   window.onload = () => {
+            renderData();
+          };
+    function renderData() {
+      const tbl = {
+        method: "GET",
+        headers: {
+          authorization: "bearer " + localStorage.getItem("token"),
+        },
+      };
+      fetch("https://hr502.herokuapp.com/visiter", tbl)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (text) {
+          console.log(text);
+          window.onload = () => {
+            loadTableData(text);
+          };
+          loadTableData(text);
+          function loadTableData(text, selectedSource) {
+            const tableBody = document.getElementById("tableData");
+            let dataHtml = "";
+            for (let person of text) {
+              if (
+                person.source === document.getElementById("Fil_source").value && person.status === document.getElementById("Fil_status").value
+              ) {
+                console.log('source yes status yes ');
+                dataHtml +=
+                  "<tr><td>" +
+                  person.fname +
+                  " " +
+                  person.lname +
+                  "</td><td>" +
+                  person.jobName +
+                  "</td><td>" +
+                  person.source +
+                  "</td><td>" +
+                  person.status +
+                  "</td><td>" +
+                  person.email +
+                  "</td><td>" +
+                  person.mobileNo +  "</td><td>" +person.currentDesignation +"</td><td>" + person.feedback +
+                  "</td><td>" +
+                  person.address +
+                  "</td><td>" +
+                  person.cCTC +
+                  "</td><td>" +
+                  person.eCTC +
+                  "</td><td>" +
+                  person.noticePeriod +
+                  "</td><td>" +
+                  person.skills +
+                  "</td><td>" +
+                  person.resumeUrl +
+                  "</td></tr>";
+              }  else if (
+                person.source === document.getElementById("Fil_source").value && document.getElementById("Fil_status").value === ""
+              ) {
+                console.log('source yes status no ');
+                dataHtml +=
+                "<tr><td>" +
+                person.fname +
+                " " +
+                person.lname +
+                "</td><td>" +
+                person.jobName +
+                "</td><td>" +
+                person.source +
+                "</td><td>" +
+                person.status +
+                "</td><td>" +
+                person.email +
+                "</td><td>" +
+                person.mobileNo +  "</td><td>" +person.currentDesignation +"</td><td>" + person.feedback +
+                "</td><td>" +
+                person.address +
+                "</td><td>" +
+                person.cCTC +
+                "</td><td>" +
+                person.eCTC +
+                "</td><td>" +
+                person.noticePeriod +
+                "</td><td>" +
+                person.skills +
+                "</td><td>" +
+                person.resumeUrl +
+                "</td></tr>";
+              }
+              else if (
+                document.getElementById("Fil_source").value === "" &&  person.status === document.getElementById("Fil_status").value
+              ) {
+                console.log('source no status yes ');
+                dataHtml +=
+                "<tr><td>" +
+                person.fname +
+                " " +
+                person.lname +
+                "</td><td>" +
+                person.jobName +
+                "</td><td>" +
+                person.source +
+                "</td><td>" +
+                person.status +
+                "</td><td>" +
+                person.email +
+                "</td><td>" +
+                person.mobileNo +  "</td><td>" +person.currentDesignation +"</td><td>" + person.feedback +
+                "</td><td>" +
+                person.address +
+                "</td><td>" +
+                person.cCTC +
+                "</td><td>" +
+                person.eCTC +
+                "</td><td>" +
+                person.noticePeriod +
+                "</td><td>" +
+                person.skills +
+                "</td><td>" +
+                person.resumeUrl +
+                "</td></tr>";
+              }
+              else if (
+                document.getElementById("Fil_source").value === "" && document.getElementById("Fil_status").value === ""
+              ) { console.log('source no status no ');
+                dataHtml +=
+                "<tr><td>" +
+                person.fname +
+                " " +
+                person.lname +
+                "</td><td>" +
+                person.jobName +
+                "</td><td>" +
+                person.source +
+                "</td><td>" +
+                person.status +
+                "</td><td>" +
+                person.email +
+                "</td><td>" +
+                person.mobileNo +  "</td><td>" +person.currentDesignation +"</td><td>" + person.feedback +
+                "</td><td>" +
+                person.address +
+                "</td><td>" +
+                person.cCTC +
+                "</td><td>" +
+                person.eCTC +
+                "</td><td>" +
+                person.noticePeriod +
+                "</td><td>" +
+                person.skills +
+                "</td><td>" +
+                person.resumeUrl +
+                "</td></tr>";
+              }
+            }
+            console.log(dataHtml);
+            console.log(document.getElementById("Fil_source").value);
+            tableBody.innerHTML = dataHtml;
+          }
+        });
+    }
+  </script>
+</html>
