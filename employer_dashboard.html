@@ -362,6 +362,7 @@
           arr.push(text[i].jobName);
         }
         console.log(arr);
+        document.getElementById("jb_av").options.length=1;
         for (const val of arr) {
           var option = document.createElement("option");
           option.value = val;
