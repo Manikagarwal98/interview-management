@@ -58,7 +58,7 @@
           <div class="form-group">
               <label for="Status">Status</label>
           <select class="form-control" id='status' required>
-            <option value="" selected>please Select</option>
+            <option value="" selected>Not-seen</option>
             <option>Shortlisted</option>
             <option>Rejected</option>
             <option>In-process</option>
@@ -133,6 +133,7 @@ renderData();
 window.onload = () => {
       renderData();
     };
+
 function renderData() {
 let emp_data = [];
   let details = {
@@ -212,6 +213,7 @@ console.log(person._id);
       })
       .then(function (text) {
         console.log(text);
+        renderData();
       });
   };
   document.addEventListener("DOMContentLoaded", () => {
