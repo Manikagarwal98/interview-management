@@ -21,7 +21,7 @@ width: 50%;
 .buttons{
   margin-bottom: 90px;
 }
-@media (max-width:845px){
+@media (max-width:765px){
   .main{
     flex-wrap:wrap;
   }
