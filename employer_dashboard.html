@@ -435,7 +435,7 @@
                   "</td><td>" +
                   person.skills +
                   "</td><td>" +
-                  person.resumeUrl +
+                  `<a href='${person._id}'>ClickMe</a>` +
                   "</td></tr>";
               }  else if (
                 person.source === document.getElementById("Fil_source").value && document.getElementById("Fil_status").value === ""
@@ -467,7 +467,7 @@
                 "</td><td>" +
                 person.skills +
                 "</td><td>" +
-                person.resumeUrl +
+              `<a href='${person.resumeUrl}'>ClickMe</a>` +
                 "</td></tr>";
               }
               else if (
@@ -500,7 +500,7 @@
                 "</td><td>" +
                 person.skills +
                 "</td><td>" +
-                person.resumeUrl +
+                `<a href='${person.resumeUrl}'>ClickMe</a>` +
                 "</td></tr>";
               }
               else if (
@@ -532,7 +532,7 @@
                 "</td><td>" +
                 person.skills +
                 "</td><td>" +
-                person.resumeUrl +
+                `<a href='${person.resumeUrl}'>ClickMe</a>` +
                 "</td></tr>";
               }
             }

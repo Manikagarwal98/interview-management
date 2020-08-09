@@ -177,7 +177,7 @@ console.log(person._id);
             "</td><td>" +
             person.email +
             "</td><td>" +  person.mobileNo +  "</td><td>" + person.currentDesignation +  "</td><td>" + person.address + "</td><td>" + person.cCTC +"</td><td>" +
-            person.eCTC +  "</td><td>" +  person.noticePeriod +"</td><td>" + person.skills +  "</td><td>" + person.resumeUrl +`</td><td><button class='dis-btn' data=${person._id} onclick='fun(this)'>feedback</button></td><td>`+ "</td></tr>";
+            person.eCTC +  "</td><td>" +  person.noticePeriod +"</td><td>" + person.skills +  "</td><td>" +`<a href='${person.resumeUrl}'>ClickMe</a>` +`</td><td><button class='dis-btn' data=${person._id} onclick='fun(this)'>feedback</button></td><td>`+ "</td></tr>";
         }
       console.log(dataHtml);
 
