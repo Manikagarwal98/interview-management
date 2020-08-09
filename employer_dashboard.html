@@ -24,22 +24,13 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script>
-
-      if(localStorage.getItem('token') == null) {
-        var emp_log = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_login.html");
-         window.location.replace(emp_log);
-      }
-
-
-    </script>
     <title></title>
   </head>
   <body>
     <div class="main_sec">
       <div class="nav-item nav-link" id="invt">
-          <h4 style="width:15%;">Invite link:</h4>
-          <a href="#" id="invite_link">this is the link</a> </div>
+          <h4>Invite link:</h4>
+          <a id="invite_link" htef="#" onclick="redirect()"></a> </div>
       <nav>
         <div class="nav nav-tabs mnk" id="nav-tab" role="tablist">
           <a
@@ -259,7 +250,18 @@
         </div>
       </div>
     </div>
-  </body>
+  </body><script>
+  let invite_page = (window.location.protocol + "//" + window.location.host + "/interview-management/invite_page.html");
+   document.getElementById('invite_link').innerHTML = invite_page;
+   function redirect() {
+     window.location.replace(invite_page);
+
+   }
+    if(localStorage.getItem('token') == null) {
+      var emp_log = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_login.html");
+       window.location.replace(emp_log);
+    }
+  </script>
   <script>
     let itvr_data = [];
 

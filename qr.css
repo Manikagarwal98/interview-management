@@ -1,0 +1,25 @@
+body{
+    background: linear-gradient(#3800e7, #8a15ff );
+    height: 100vh;
+
+
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    align-items: center;
+    background-color: white;
+    padding: 5%;
+    margin: 5% auto;
+    border-radius: 10%;
+}
+.item{
+  padding: 7px 0px;
+}
+#link_address {
+    border: 1px solid gray;
+    padding: 7px;
+    border-radius: 5px;
+        background: aliceblue;
+}

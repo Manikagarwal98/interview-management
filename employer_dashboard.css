@@ -1,7 +1,7 @@
 body{
   background: linear-gradient(#3800e7, #8a15ff );
   height: 100vh;
-  
+
 
 }
 .mnk{
@@ -16,9 +16,11 @@ body{
 }
 
 .main_sec{
-  width:80%;
-  margin: auto;
-  background-color: white;
+  width: 90%;
+      margin: 20px auto;
+      background-color: white;
+      padding: 20px 0px;
+      border-radius: 50px;
 }
 .tab-content{
   padding: 5%;
@@ -52,19 +54,15 @@ th{
 }
 #invite_link{
   width: inherit;
-  border: 1px solid grey;
-  padding:5px;
-  margin-left: 5px;
-
+      border: 1px solid grey;
+      border-radius: 4px;
+      padding: 5px;
+      margin-left: 5px;
 }
 #invt{
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  width:100%;
-
 }
 #invt>h4{
-    width:auto;
+  width: auto;
+  margin: 0px 5px;
 }
