@@ -20,5 +20,9 @@
     document.getElementById("link_address").innerHTML = qrdata;
       var data = qrdata;
       qrcode.makeCode(data)
+      function fun() {
+      window.location.replace(qrdata);
+
+      }
   </script>
 </html>
