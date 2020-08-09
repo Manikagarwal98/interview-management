@@ -104,7 +104,6 @@ const options ={
 })
 </script>
 <script>
-var getToken = window.location.search.slice(1);
   let emp_data = [];
 
   const add_emp = (ev)=>{
@@ -122,10 +121,9 @@ var getToken = window.location.search.slice(1);
           'noticePeriod':document.getElementById('np').value,
           'skills':document.getElementById('skills').value,
           'resumeUrl':document.getElementById('cv').value,
-          'companyId':getToken.substring(getToken.indexOf('=') + 1)
+          'companyId':window.location.search.slice(1)
         }
       emp_data.push(details);
-
       console.warn('added' , {emp_data} );
       const options ={
         method:"POST",
