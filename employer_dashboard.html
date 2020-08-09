@@ -328,6 +328,7 @@
           console.log(text);
           console.log(localStorage.getItem("token"));
           console.log("working");
+          getJob();
         });
     };
     document.addEventListener("DOMContentLoaded", () => {
@@ -341,7 +342,8 @@
     }
   </script>
   <script>
-
+  window.onload = getJob();
+ function getJob() {
     const ddown = {
       method: "GET",
     };
@@ -367,6 +369,7 @@
           document.getElementById("jb_av").appendChild(option);
         }
       });
+}
   </script>
   <script>
     var activities = document.getElementById("Fil_source");
