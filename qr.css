@@ -12,7 +12,7 @@ body{
     background-color: white;
     padding: 5%;
     margin: 5% auto;
-    border-radius: 10%;
+    border-radius: 10px;
 }
 .item{
   padding: 7px 0px;

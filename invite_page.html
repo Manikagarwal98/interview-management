@@ -8,14 +8,14 @@
   <body>
     <div class="container">
       <h1 class="item">For Registration visit</h1>
-    <a class="item" href="candidade_reg.html" id="link_address"></a>
+    <a class="item" onclick="fun()" id="link_address"></a>
     <h1 class="item">Or Scan</h1>
     <div class="item"id="qrcode"></div>
     <div>
   </body>
   <script src='qrcode.min.js'></script>
   <script>
-  let qrdata = ("candidate_reg.html?token=" + localStorage.getItem('companyId'));
+  let qrdata = (window.location.protocol + "//" + window.location.host + "/interview-management/candidate_reg.html?token=" + localStorage.getItem('companyId'));
     var qrcode = new QRCode(document.getElementById('qrcode'));
     document.getElementById("link_address").innerHTML = qrdata;
       var data = qrdata;

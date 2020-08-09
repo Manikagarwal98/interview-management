@@ -121,7 +121,7 @@ const options ={
           'noticePeriod':document.getElementById('np').value,
           'skills':document.getElementById('skills').value,
           'resumeUrl':document.getElementById('cv').value,
-          'companyId':localStorage.getItem('companyId')
+          'companyId':getToken.substring(getToken.indexOf('=') + 1)
         }
       emp_data.push(details);
 
