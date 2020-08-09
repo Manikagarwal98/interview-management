@@ -18,7 +18,10 @@ align-self: center;
 margin: 10% 0%;
 width: 50%;
 }
-@media (max-width:765px){
+.buttons{
+  margin-bottom: 90px;
+}
+@media (max-width:845px){
   .main{
     flex-wrap:wrap;
   }
@@ -26,10 +29,14 @@ width: 50%;
     width: 75%;
     margin: 0%;
   }
+  .buttons{
+    margin-left: 15%;
+  }
+  .text {
+      margin: auto;
+  }
 }
-.buttons{
-  margin-bottom: 90px;
-}
+
 
 .t1
 {
