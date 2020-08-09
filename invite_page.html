@@ -15,7 +15,7 @@
   </body>
   <script src='qrcode.min.js'></script>
   <script>
-  let qrdata = (window.location.protocol + "//" + window.location.host + "/interview-management/candidate_reg.html?token=" + localStorage.getItem('companyId'));
+  let qrdata = (window.location.protocol + "//" + window.location.host + "/interview-management/candidate_reg.html?" + localStorage.getItem('companyId'));
     var qrcode = new QRCode(document.getElementById('qrcode'));
     document.getElementById("link_address").innerHTML = qrdata;
       var data = qrdata;
