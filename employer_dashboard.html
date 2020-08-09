@@ -289,6 +289,9 @@
         .then(function (text) {
           console.log(text);
           console.log(localStorage.getItem("token"));
+          if(text.msg="Email is sent"){
+            alert("Mail is sent to interviewer")
+          }
         });
     };
     document.addEventListener("DOMContentLoaded", () => {
