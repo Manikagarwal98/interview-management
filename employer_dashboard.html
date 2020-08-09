@@ -254,7 +254,7 @@
   let invite_page = (window.location.protocol + "//" + window.location.host + "/interview-management/invite_page.html");
    document.getElementById('invite_link').innerHTML = invite_page;
    function redirect() {
-     window.location.replace(invite_page);
+     window.location.href= invite_page;
 
    }
     if(localStorage.getItem('token') == null) {

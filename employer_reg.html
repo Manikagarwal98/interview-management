@@ -42,7 +42,7 @@
           <input type="password" class="form-control" name="password2" id="password2" minlength="6" placeholder="Re-enter Password" required>
     </div>
 
-  <button type="submit" id="btn" class="btn btn-primary" >verify email</button>
+  <button type="submit" id="btn" class="btn btn-primary" >Verify Email</button>
   <div id="msg">
              <pre></pre>
          </div>
@@ -53,7 +53,7 @@
 </div>
 </body>
 <script>
- 
+
 
          function checkPassword(form) {
              password1 = form.password1.value;
@@ -109,7 +109,8 @@
                 alert(errString);
               }
               else{
-                alert("verification mail is sent to Your Email")
+                alert("verification mail is sent to Your Email");
+                window.location.return(window.location.protocol + "//" + window.location.host + "/interview-management");
               }
            })
       };
