@@ -1,4 +1,5 @@
 body{
+  overflow: hidden;
   display: flex;
   background: url("background.jpg");
   height: 95vh;
@@ -22,9 +23,14 @@ width: 50%;
   margin-bottom: 90px;
 }
 @media (max-width:765px){
+body{
+  overflow: visible;
+}
   .main{
     flex-wrap:wrap;
-  }
+
+    justify-content: center;
+}
   .container{
     width: 75%;
     margin: 0%;
@@ -36,8 +42,6 @@ width: 50%;
       margin: auto;
   }
 }
-
-
 .t1
 {
 	font-size:45px;
