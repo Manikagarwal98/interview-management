@@ -1,6 +1,9 @@
 body{
-    background: linear-gradient(#3800e7, #8a15ff );
+    background: url("background.jpg");
     height: 100vh;
+    background-size: 100% 100%;
+   background-attachment: fixed;
+ font-family:  Arial, Helvetica, sans-serif;
 
 
 }
