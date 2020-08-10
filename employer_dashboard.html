@@ -30,7 +30,7 @@
     <div class="main_sec">
       <div class="nav-item nav-link" id="invt">
           <h4>Invite link:</h4>
-          <a id="invite_link" htef="#" onclick="redirect()"></a> </div>
+          <a id="invite_link" class="invite_link"onclick="redirect()"></a> </div>
       <nav>
         <div class="nav nav-tabs mnk" id="nav-tab" role="tablist">
           <a
@@ -101,7 +101,7 @@
                 <th>Source</th>
                 <th>Application Status</th>
                 <th>Email</th>
-                <th>phone no.</th>
+                <th>Phone No.</th>
                 <th>Current Designation</th>
                 <th>Feedback</th>
                 <th>Address</th>
@@ -173,7 +173,7 @@
                 <input type="time" id="t_to" class="form-control" required />
               </div>
             </div>
-            <button type="submit" id="btn" class="btn btn-primary">
+            <button type="submit" id="btn" class="Button">
               Submit
             </button>
           </form>
@@ -235,7 +235,7 @@
                     <option value="" selected disabled>Please select</option>
                   </select>
                 </div>
-                <button type="submit" id="Interviewer_btn" class="btn btn-primary">Create</button>
+                <button type="submit" id="Interviewer_btn" class="Button">Create</button>
               </form>
             </div>
             <div
@@ -266,7 +266,7 @@
     let itvr_data = [];
 
     const add_itvr = (ev) => {
-      ev.preventDefault(); //to stop the form submitting
+      ev.preventDefault();
       let ids = {
         email: document.getElementById("int_email").value,
         profile: document.getElementById("jb_av").value
@@ -288,9 +288,13 @@
         })
         .then(function (text) {
           console.log(text);
+          console.log(text.msg);
           console.log(localStorage.getItem("token"));
           if(text.msg="Email is sent"){
             alert("Mail is sent to interviewer")
+          }
+          else{
+            alert("Fill all the inputs")
           }
         });
     };
@@ -438,7 +442,7 @@
                   "</td><td>" +
                   person.skills +
                   "</td><td>" +
-                  `<a href='${person._id}'>ClickMe</a>` +
+                  `<a href='${person._id}'>OpenCV</a>` +
                   "</td></tr>";
               }  else if (
                 person.source === document.getElementById("Fil_source").value && document.getElementById("Fil_status").value === ""
@@ -470,7 +474,7 @@
                 "</td><td>" +
                 person.skills +
                 "</td><td>" +
-              `<a href='${person.resumeUrl}'>ClickMe</a>` +
+              `<a href='${person.resumeUrl}'>OpenCV</a>` +
                 "</td></tr>";
               }
               else if (
@@ -503,7 +507,7 @@
                 "</td><td>" +
                 person.skills +
                 "</td><td>" +
-                `<a href='${person.resumeUrl}'>ClickMe</a>` +
+                `<a href='${person.resumeUrl}'>OpenCV</a>` +
                 "</td></tr>";
               }
               else if (
@@ -535,7 +539,7 @@
                 "</td><td>" +
                 person.skills +
                 "</td><td>" +
-                `<a href='${person.resumeUrl}'>ClickMe</a>` +
+                `<a href='${person.resumeUrl}'>OpenCV</a>` +
                 "</td></tr>";
               }
             }

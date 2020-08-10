@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 body{
     background: url("background.jpg");
   height: 100vh;
@@ -16,21 +19,22 @@ font-family:  Arial, Helvetica, sans-serif;
       align-self: center;
       width: 90%;
       margin: 20px auto;
-      background-color:#007bff;
+      background-color:#522708;
       border: none;
       border-radius: 10px;
-      box-shadow: 0 9px 10px #999;
+      box-shadow: 0 9px 10px #431f11;
 }
 
-.button:hover {background-color:  #0062cc}
+.button:hover {background-color:  #441e0b}
 
 button:active {
-  background-color:  #0062cc;
-  box-shadow: 0 5px #666;
+  outline: none;
+  background-color:  #441e0b;
+  box-shadow: 0 5px #431f11;
   transform: translateY(4px);
 }
 #main{
-  border-top: 10px solid #cc0000;
+  border-top: 10px solid #522708;
   width:70%;
   margin:auto;
   margin-top: 5%;
