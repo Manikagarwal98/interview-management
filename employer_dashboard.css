@@ -145,3 +145,7 @@ background-color: #522708;
 .nav-pills a{
   color: #522708;
 }
+
+#Manage {
+    overflow: scroll;
+}

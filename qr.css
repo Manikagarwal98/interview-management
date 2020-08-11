@@ -17,6 +17,13 @@ body{
     margin: 5% auto;
     border-radius: 10px;
 }
+@media (max-width:400px) {
+  .container{
+    width:85%;
+    text-align: center;
+  }
+
+}
 .item{
   padding: 7px 0px;
 }
