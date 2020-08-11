@@ -240,13 +240,19 @@
                 <button type="submit" id="Interviewer_btn" class="Button">Create</button>
               </form>
             </div>
-            <div
-              class="tab-pane fade"
-              id="Manage"
-              role="tabpanel"
-              aria-labelledby="Manage-tabtab"
-            >
-              ...
+            <div class="tab-pane fade"  id="Manage"  role="tabpanel"  aria-labelledby="Manage-tabtab">
+              <table>
+              <thead>
+                <tr>
+
+                  <th>Email</th>
+                  <th>Profiles</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody id="interviewer_data"></tbody>
+            </table>
             </div>
           </div>
         </div>
@@ -392,6 +398,7 @@
     });
 	   window.onload = () => {
             renderData();
+             interviewer_table();
           };
     function renderData() {
       const tbl = {
@@ -551,5 +558,97 @@
           }
         });
     }
+  </script>
+
+
+
+
+
+
+
+
+  <script>
+
+  function interviewer_table() {
+
+  const intv_table = {
+    method: "GET",
+    headers: {
+      authorization: "bearer " + localStorage.getItem("token"),
+    },
+  };
+  fetch("https://hr502.herokuapp.com/company/get/interviewers", intv_table)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (text) {
+      console.log(text);
+      console.log(text.interviewer);
+      window.onload = () => {
+        loadTableData(text_tbl);
+      };
+      var text_tbl = text.interviewer;
+      loadTableData(text_tbl);
+      function loadTableData(text_tbl, selectedSource) {
+        const tableBody = document.getElementById("interviewer_data");
+        let data_Html = "";
+        for (let person of text_tbl) {
+  console.log(text);
+  console.log(person._id);
+              data_Html +=
+              "<tr><td>" + person.email + "</td><td>" + person.profile
+              +`</td><td><button class='delete' id="dlt_btn" data=${person._id} onclick='dlt(this)'>Delete</button></td><tr>`;
+          }
+        console.log(data_Html);
+
+        tableBody.innerHTML = data_Html;
+      }
+    });}
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+  var dlt_id;
+  function dlt(id) {
+dlt_id = id.getAttribute("data");
+console.log(dlt_id);
+let dlt_data=[];
+    let ids = {
+
+      id: dlt_id
+    };
+    dlt_data.push(ids);
+
+    console.warn("added", { dlt_data });
+    const opt = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: "bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify(ids),
+    };
+    fetch("https://hr502.herokuapp.com/company/delete/interviewer", opt)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (text) {
+        console.log(text);
+        if(text.status === 'OK'){
+           interviewer_table();
+        }
+
+      });
+
+};
   </script>
 </html>
