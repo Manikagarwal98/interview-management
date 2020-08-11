@@ -111,7 +111,23 @@ background: #633d22;;
   padding: .8rem 3rem;
   color: white;
 }
-.Button:hover {background-color:  #441e0b}
+.delete{
+padding: 8px;
+    font-size: inherit;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    justify-content: center;
+    display: flex;
+    align-self: center;
+    width: 90%;
+    margin: 7px auto;
+    background-color: #522708;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 9px 10px #431f11;
+}
+.Button:hover ,.delete:hover{background-color:  #441e0b}
 
 button:active {
   background-color:  #441e0b;
