@@ -80,10 +80,11 @@
     <button type="submit" id='btn' class="button"  >Verify Email</button>
   </form>
   <script>
+  var getToken = window.location.search.slice(1);
 const options ={
   method:"GET"
 };
-  fetch("https://hr502.herokuapp.com/comapanyjobs"+ localStorage.getItem('companyId'),options)
+  fetch("https://hr502.herokuapp.com/comapanyjobs"+ getToken.substring(getToken.indexOf('=') + 1),options)
     .then(function(response) {
       return response.json();
     }).then(function(text){
@@ -104,7 +105,6 @@ const options ={
 })
 </script>
 <script>
-var getToken = window.location.search.slice(1);
 console.log(getToken);
 console.log(getToken.substring(getToken.indexOf('=') + 1));
   let emp_data = [];

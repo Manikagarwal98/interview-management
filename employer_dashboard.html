@@ -35,12 +35,22 @@
         <div class="nav nav-tabs mnk" id="nav-tab" role="tablist">
           <a
             class="nav-item nav-link active set"
+            id="nav-info-tab"
+            data-toggle="tab"
+            href="#nav-info"
+            role="tab"
+            aria-controls="nav-info"
+            aria-selected="true"
+            >Dashboard</a
+          >
+          <a
+            class="nav-item nav-link set"
             id="nav-view-tab"
             data-toggle="tab"
             href="#nav-view"
             role="tab"
             aria-controls="nav-view"
-            aria-selected="true"
+            aria-selected="false"
             >View</a
           >
           <a
@@ -73,7 +83,10 @@
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-view" role="tabpanel" aria-labelledby="nav-view-tab">
+        <div class="tab-pane fade show active" id="nav-info" role="tabpanel" aria-labelledby="nav-view-tab">
+          <div id="company_info">
+        </div></div>
+        <div class="tab-pane fade" id="nav-view" role="tabpanel" aria-labelledby="nav-view-tab">
           <div class='filters'>
             <label>Filter By: </label>
             <div class="filter_dd">
@@ -269,6 +282,36 @@
       var emp_log = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_login.html");
        window.location.replace(emp_log);
     }
+  </script>
+  <script>
+  const info ={
+    method:"GET",
+    headers: {
+      authorization: "bearer " + localStorage.getItem("token")
+    }
+  };
+    fetch("https://hr502.herokuapp.com/company/get/information",info)
+      .then(function(response) {
+        return response.json();
+      }).then(function(text){
+        console.log(text.Details);
+
+        const C_info = document.getElementById("company_info");
+        let cHtml = "";
+        var c_Data = text.Details[0];
+        console.log(c_Data);
+              cHtml +=
+              "<p>Company Name: " + c_Data.name +
+              "</p><p>HR Name: " + c_Data.hrFirstName + " "+c_Data.hrLastName +
+              "</p><p>Email: " +  c_Data.email +
+              "</p><p>mobileNo: " + c_Data.mobileNo +
+              "</p><p>Address: " +c_Data.address +"</p>"
+        console.log(cHtml);
+
+        C_info.innerHTML = cHtml;
+
+
+  })
   </script>
   <script>
     let itvr_data = [];
