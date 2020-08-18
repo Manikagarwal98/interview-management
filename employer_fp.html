@@ -13,7 +13,7 @@
     <form onSubmit = "return checkPassword(this)">
       <h1 class="title">Email verified !!</h1>
       <div class="form-group">
-           <label for="password">Create Password</label>
+           <label for="password">Create New Password</label>
            <input type="password" class="form-control" name="password1" placeholder="Password" required>
            </div>
      <div class="form-group">
@@ -67,18 +67,19 @@
              },
                body: JSON.stringify(details)
              };
-             fetch('https://hr502.herokuapp.com/interviewer/register', options)
+             fetch('https://hr502.herokuapp.com/reset/password/company', options)
              .then(function(response) {
                return response.json();
              }).then(function(text){
                console.log('its working');
                console.log(text);
                if(text.status=== 'OK'){
-                 alert("you r registered");
-                 var intv_log = (window.location.protocol + "//" + window.location.host + "/interview-management/interviewer_login.html");
+                 var emp_log = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_login.html");
                  window.location.replace(intv_log);
                }
-
+               else {
+                 alert("link expired");
+               }
              })
            };
            document.addEventListener('DOMContentLoaded', ()=>{

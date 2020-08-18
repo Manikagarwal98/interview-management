@@ -25,12 +25,17 @@
            <label for="Password">Password</label>
            <input type="password" class="form-control" id="password"  placeholder="Enter Password" required>
      </div>
-     <a href="#" class="fp">forgot password?</a>
+     <a href="#" onclick="emp_fp()" class="fp">forgot password?</a>
        <button type="submit" id='btn' class="button" >Login</button>
     </form>
-
     </div>
   </body>
+  <script>
+    function emp_fp(){
+      let change_pw = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_changepassword.html");
+          window.location.replace(change_pw);
+    }
+  </script>
   <script>
     let emp_data = [];
 
