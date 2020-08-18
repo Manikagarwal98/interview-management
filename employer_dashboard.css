@@ -165,3 +165,36 @@ background-color: #522708;
 #Manage {
     overflow: scroll;
 }
+.set1{
+   display: none;
+   color: white;
+}
+.set1:hover
+{
+color: white;
+transform: scale(1.03);}
+.line{
+  width: 35px;
+height: 4px;
+background-color: white;
+margin: 4px 0;
+margin-left: 10px;
+}
+.nav-dd{
+  display: none;
+
+  flex-direction: column;
+}
+.nav-dd:hover
+  .set1{
+    display: block;
+}
+@media (max-width: 550px) {
+  .nav-dd{
+    display: block;
+  }
+  .mnk{
+    display: none;
+  }
+
+}
