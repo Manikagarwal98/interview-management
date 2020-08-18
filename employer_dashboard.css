@@ -196,5 +196,7 @@ margin-left: 10px;
   .mnk{
     display: none;
   }
-
+}
+.set1:active{
+  display: none;
 }
