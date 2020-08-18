@@ -358,7 +358,19 @@
         .then(function (text) {
           console.log(text);
           console.log(localStorage.getItem("token"));
-          console.log("working");
+           let errString = ("Please enter following fields: \n");
+          if(typeof(text.msg) === 'undefined' )
+           {
+            for(let err of text.errors){
+            console.log(err.msg);
+            errString += err.msg +", ";
+          }
+             alert(errString);
+           }
+           else{
+             alert(text.msg);
+
+           }
           getJob();
         });
     };
