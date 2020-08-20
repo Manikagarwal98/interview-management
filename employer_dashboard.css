@@ -233,6 +233,7 @@ margin-left: 10px;
 }
 .applicant_data{
    display: none;
+   margin-top: 3%; 
 }
 .open_applicant_data{
   display: block;
