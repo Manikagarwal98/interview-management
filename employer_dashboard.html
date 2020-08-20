@@ -60,12 +60,28 @@
           <div id="company_info">
         </div></div>
         <div class="tab-pane fade" id="nav-view" role="tabpanel" aria-labelledby="nav-view-tab">
+          <div class="interview_data">
+            <table>
+              <thead>
+                <tr>
+                  <th>Event</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Applicants</th>
+                </tr>
+              </thead>
+
+              <tbody id="job_table"></tbody>
+            </table>
+          </div>
+          <div class='applicant_data'>
+          <div class="filter_container">
           <div class='filters'>
             <label>Filter By: </label>
             <div class="filter_dd">
             <select id="Fil_source">
               <option value="" selected>Source</option>
-              <option>company website</option>
+              <option>Company Website</option>
               <option>Social Media</option>
               <option>College</option>
               <option>Company Employee</option>
@@ -81,6 +97,10 @@
             </select>
           </div>
           </div>
+          <button class="close-btn"><i>X</i></button>
+        </div>
+          <div class="applicant_table">
+
           <table id='tableexp'>
             <thead>
               <tr>
@@ -103,8 +123,10 @@
 
             <tbody id="tableData"></tbody>
           </table>
-          <button onclick="exportTableToExcel('tableexp')" class="Button">Download To Excel</button>
+          <button onclick="exportTableToExcel('tableexp')" style="margin:10px 0px"class="Button">Download To Excel</button>
+          </div>
         </div>
+      </div>
         <div
           class="tab-pane fade"
           id="nav-Create"
@@ -263,11 +285,7 @@
     var dataType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
     var tableSelect = document.getElementById(tableexp);
     var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-
-    // Specify file name
     filename = filename?filename+'.xls':'excel_data.xls';
-
-    // Create download link element
     downloadLink = document.createElement("a");
 
     document.body.appendChild(downloadLink);
@@ -278,14 +296,11 @@
         });
 
         navigator.msSaveOrOpenBlob( blob, filename);
-    }else{
-        // Create a link to the file
+    }
+    else{
+
         downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-
-        // Setting the file name
         downloadLink.download = filename;
-
-        //triggering the function
         downloadLink.click();
     }
 }
@@ -446,8 +461,63 @@
           option.text = val;
           document.getElementById("jb_av").appendChild(option);
         }
+
       });
 }
+  </script>
+  <script>
+  var jobname_id;
+  function fun(id) {
+const disBtn1 = document.querySelector(".detail_app");
+const dis1 = document.querySelector(".applicant_data");
+const closeBtn = document.querySelectorAll(".close-btn");
+console.log(id.getAttribute("data"));
+jobname_id = id.getAttribute("data");
+console.log(jobname_id);
+renderData();
+  dis1.classList.add("open_applicant_data");
+closeBtn[0].addEventListener("click", function () {
+  dis1.classList.remove("open_applicant_data");
+});}
+  </script>
+  <script>
+  const job_tb = {
+    method: "GET",
+  };
+  fetch(
+    "https://hr502.herokuapp.com/comapanyjobs" +
+      localStorage.getItem("companyId"),
+    job_tb
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (text) {
+      console.log(text);
+      window.onload = () => {
+        loadTable(text);
+      };
+      loadTable();
+      function loadTable() {
+        const job_tbl = document.getElementById("job_table");
+        let tabdata = "";
+        for (let person of text) {
+  console.log(text);
+  console.log(person._id);
+              tabdata +=
+              "<tr><td>" +
+              person.jobName+
+              "</td><td>" +
+            person.datefrom +" To " +person.dateto +
+              "</td><td>" +
+            person.timefrom +" To " +person.timeto+
+            `</td><td><button class='detail_app' data=${person._id} onclick='fun(this)'>Details</button></td><tr>`;
+          }
+        console.log(tabdata);
+
+        job_tbl.innerHTML = tabdata;
+      }
+    });
   </script>
   <script>
     var activities = document.getElementById("Fil_source");
@@ -483,9 +553,8 @@
             const tableBody = document.getElementById("tableData");
             let dataHtml = "";
             for (let person of text) {
-              if (
-                person.source === document.getElementById("Fil_source").value && person.status === document.getElementById("Fil_status").value
-              ) {
+              if(person.jobName_id=== jobname_id){
+              if (person.source === document.getElementById("Fil_source").value && person.status === document.getElementById("Fil_status").value) {
                 console.log('source yes status yes ');
                 dataHtml +=
                   "<tr><td>" +
@@ -513,7 +582,7 @@
                   "</td><td>" +
                   person.skills +
                   "</td><td>" +
-                  `<a href='${person._id}'>OpenCV</a>` +
+                  `<a href='${person._id}'>Open_CV</a>` +
                   "</td></tr>";
               }  else if (
                 person.source === document.getElementById("Fil_source").value && document.getElementById("Fil_status").value === ""
@@ -545,7 +614,7 @@
                 "</td><td>" +
                 person.skills +
                 "</td><td>" +
-              `<a href='${person.resumeUrl}'>OpenCV</a>` +
+              `<a href='${person.resumeUrl}'>Open_CV</a>` +
                 "</td></tr>";
               }
               else if (
@@ -578,7 +647,7 @@
                 "</td><td>" +
                 person.skills +
                 "</td><td>" +
-                `<a href='${person.resumeUrl}'>OpenCV</a>` +
+                `<a href='${person.resumeUrl}'>Open_CV</a>` +
                 "</td></tr>";
               }
               else if (
@@ -610,10 +679,10 @@
                 "</td><td>" +
                 person.skills +
                 "</td><td>" +
-                `<a href='${person.resumeUrl}'>OpenCV</a>` +
+                `<a href='${person.resumeUrl}'>Open_CV</a>` +
                 "</td></tr>";
               }
-            }
+            }}
             console.log(dataHtml);
             console.log(document.getElementById("Fil_source").value);
             tableBody.innerHTML = dataHtml;
