@@ -81,7 +81,7 @@
             </select>
           </div>
           </div>
-          <table>
+          <table id='tableexp'>
             <thead>
               <tr>
                 <th>Name</th>
@@ -103,6 +103,7 @@
 
             <tbody id="tableData"></tbody>
           </table>
+          <button onclick="exportTableToExcel('tableexp')" class="Button">Download To Excel</button>
         </div>
         <div
           class="tab-pane fade"
@@ -255,6 +256,39 @@
       var emp_log = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_login.html");
        window.location.replace(emp_log);
     }
+  </script>
+  <script>
+    function exportTableToExcel(tableexp, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+    var tableSelect = document.getElementById(tableexp);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+
+    // Create download link element
+    downloadLink = document.createElement("a");
+
+    document.body.appendChild(downloadLink);
+
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+        // Setting the file name
+        downloadLink.download = filename;
+
+        //triggering the function
+        downloadLink.click();
+    }
+}
   </script>
   <script>
   const info ={
