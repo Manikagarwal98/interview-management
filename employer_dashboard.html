@@ -8,6 +8,7 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="employer_dashboard.css" />
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -24,7 +25,7 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <title></title>
+    <title>Company Dashboard</title>
   </head>
   <body>
     <div class="main_sec">
@@ -324,11 +325,16 @@
         var c_Data = text.Details[0];
         console.log(c_Data);
               cHtml +=
-              "<p>Company Name: " + c_Data.name +
-              "</p><p>HR Name: " + c_Data.hrFirstName + " "+c_Data.hrLastName +
-              "</p><p>Email: " +  c_Data.email +
-              "</p><p>mobileNo: " + c_Data.mobileNo +
-              "</p><p>Address: " +c_Data.address +"</p>"
+              "</section id='top_header' class='layout'>"+
+                  "<div class='name'><b>"+ c_Data.name +"</b></div>"
+              +"<div class='txt'>"+ c_Data.hrFirstName + " "+c_Data.hrLastName +"</div>" +
+              "<a class=' fa fa-map-marker b'><b style='padding:0px 5px'>"+ c_Data.address  +"</b></a>"+
+              "<div class='contact'>"+
+                `<a class='fa fa-phone a' href='tel:${c_Data.mobileNo}'><b>  ` +c_Data.mobileNo +"</b></a>"+
+
+					       `<a class='fa fa-envelope a'  href='${c_Data.email}'>  ` + c_Data.email +"</a>" +
+	            "</div>"+
+            "</section>"
         console.log(cHtml);
 
         C_info.innerHTML = cHtml;
