@@ -41,7 +41,7 @@ button:active {
   margin-bottom: 5%;
   padding:2%;
   border-radius: 1rem;
-  color: white;
+  color: black;
   background: transparent;
     backdrop-filter: blur(32px);
 

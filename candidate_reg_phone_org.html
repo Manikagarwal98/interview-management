@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style_org.css">
+    <title>Mobile Verification</title>
+  </head>
+  <body>
+    <form id="main">
+    <h1 class="title">Email Verified!!</h1>
+    <div class="form-group">
+        <label for="number">Mobile Number</label>
+        <input type="tel" maxlength="10" class="form-control" id="phone"  placeholder="Enter Mobile Number" required>
+    </div>
+    <button type="button" id="btn" class="button"  onclick="myFunction()">Send OTP</button>
+    <div id="OTP">
+    <div class="form-group">
+        <label for="OTP">OTP</label>
+        <input type="number" class="form-control" id="code" placeholder="Enter 4 digit OTP" required>
+    </div>
+    <button type="submit"  id="btn1" class="button" >Register</button>
+    </div>
+    </Form>
+    <script>
+        function myFunction()
+        {
+          if(document.getElementById('phone').value.length == 10 )
+          {
+          document.getElementById("OTP").style.visibility = "visible";
+        return false;
+      }
+          else{
+            alert("enter correct number");
+            return false;
+          }
+        }
+        var getToken = window.location.search.slice(1);
+        console.log(getToken);
+
+        console.log(getToken.substring(getToken.indexOf('=') + 1));
+
+    </script>
+    <script>
+      let phoneNo = [];
+
+      const add_pn = (ev)=>{
+          ev.preventDefault();  //to stop the form submitting
+          let detail = {
+
+            "phoneNo": document.getElementById('phone').value
+
+
+            }
+          phoneNo.push(detail);
+
+          console.warn('added' , {phoneNo} );
+          const option ={
+            method:"POST",
+    headers: {
+     'Content-Type': 'application/json'
+     // 'Content-Type': 'application/x-www-form-urlencoded',
+   },
+            body: JSON.stringify(detail)
+          };
+          fetch('https://hr502.herokuapp.com/getMsg', option)
+          .then(function(response) {
+            return response.json();
+          }).then(function(text){
+            console.log('its working');
+            console.log(text);
+          })
+     };
+     document.addEventListener('DOMContentLoaded', ()=>{
+          document.getElementById('btn').addEventListener('click', add_pn);
+     });
+     </script>
+     <script>
+     let emp_data = [];
+
+     const add_emp = (ev)=>{
+         ev.preventDefault();  //to stop the form submitting
+         let details = {
+           "code": document.getElementById('code').value,
+           "mobileNo": document.getElementById('phone').value,
+           "token":  getToken.substring(getToken.indexOf('=') + 1)
+
+
+           }
+         emp_data.push(details);
+
+         console.warn('added' , {emp_data} );
+         const options ={
+           method:"POST",
+     headers: {
+     'Content-Type': 'application/json'
+
+     },
+           body: JSON.stringify(details)
+         };
+         fetch('https://hr502.herokuapp.com/save/application', options)
+         .then(function(response) {
+           return response.json();
+         }).then(function(text){
+           console.log('its working');
+           console.log(text.msg);
+           console.log(text);
+          if(text.msg === 'Looks like wrong code'){
+            alert('OTP is Incorrect');
+            document.getElementById('code').value == 'NULL';
+          }
+          else if (typeof(text.msg) === 'undefined') {
+            alert('OTP length inappropriate')
+          }
+           else{
+             alert('You have Successfully Registered');
+
+
+         }
+         })
+     };
+     document.addEventListener('DOMContentLoaded', ()=>{
+         document.getElementById('btn1').addEventListener('click', add_emp);
+     });
+</script>
+  </body>
+</html>

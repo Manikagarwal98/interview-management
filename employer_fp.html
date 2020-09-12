@@ -4,8 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="employer_reg.css">
-
+    <link rel="stylesheet" href="style.css">
     <title>Set Password</title>
   </head>
   <body>
@@ -24,66 +23,5 @@
     </form>
     </div>
   </body>
-  <script>
-
-           function checkPassword(form) {
-               password1 = form.password1.value;
-               password2 = form.password2.value;
-
-              if (password1 != password2) {
-                   alert ("\nPassword did not match: Please try again...")
-                   return false;
-               }
-
-               // If same return True.
-               else{
-                   return true;
-               }
-           }
-       </script>
-       <script>
-       var getToken = window.location.search.slice(1);
-       console.log(getToken);
-
-       console.log(getToken.substring(getToken.indexOf('=') + 1));
-
-        let emp_data = [];
-
-         const add_emp = (ev)=>{
-             ev.preventDefault();  //to stop the form submitting
-             let details = {
-                 'token': getToken.substring(getToken.indexOf('=') + 1),
-                 'password': document.getElementById('password').value
-
-               }
-           emp_data.push(details);
-
-           console.warn('added' , {emp_data} );
-           const options ={
-             method:"POST",
-             headers: {
-               'Content-Type': 'application/json'
-
-             },
-               body: JSON.stringify(details)
-             };
-             fetch('https://hr502.herokuapp.com/reset/password/company', options)
-             .then(function(response) {
-               return response.json();
-             }).then(function(text){
-               console.log('its working');
-               console.log(text);
-               if(text.status=== 'OK'){
-                 var intv_log = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_login.html");
-                 window.location.replace(intv_log);
-               }
-               else {
-                 alert("link expired");
-               }
-             })
-           };
-           document.addEventListener('DOMContentLoaded', ()=>{
-           document.getElementById('btn').addEventListener('click', add_emp);
-         });
-       </script>
+  <script src="employer_fp.js"></script>
 </html>

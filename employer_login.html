@@ -1,85 +1,50 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="employer_reg.css">
-    <script>
-      if(localStorage.getItem('token') != null) {
-          var emp_db = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_dashboard.html");
-         window.location.replace(emp_db);
-      }
-    </script>
-    <title>Company Login</title>
-  </head>
-  <body>
-    <div id="main">
-    <form>
-      <h1 class="title">Login</h1>
-      <div class="form-group">
-           <label for="Email">Email address</label>
-           <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email" required>
-           </div>
-     <div class="form-group">
-           <label for="Password">Password</label>
-           <input type="password" class="form-control" id="password"  placeholder="Enter Password" required>
-     </div>
-     <a href="#" onclick="emp_fp()" class="fp">forgot password?</a>
-       <button type="submit" id='btn' class="button" >Login</button>
-    </form>
-    </div>
-  </body>
-  <script>
-    function emp_fp(){
-      let change_pw = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_changepassword.html");
-          window.location.replace(change_pw);
-    }
-  </script>
-  <script>
-    let emp_data = [];
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/home_new.css">
+  
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/custom/home_new.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+ 
+<div class="login-reg-panel">
+		<div class="login-info-box">
+			<h2>Have an account?</h2>
+			<label id="label-register" for="log-reg-show">Login</label>
+			<input type="radio" name="active-log-panel" id="log-reg-show"  checked="checked">
+		</div>
+							
+		<div class="register-info-box">
+			<h2>Don't have an account?</h2>
+			
+			<label id="label-login" for="log-login-show">Register</label>
+			<input type="radio" name="active-log-panel" id="log-login-show">
+		</div>
+							
+		<div class="white-panel">
+			<div class="login-show">
+				<h2>LOGIN</h2>
+				<input type="text" placeholder="Email">
+				<input type="password" placeholder="Password">
+				<input type="button" value="Login">
+				<a href="">Forgot password?</a>
+			</div>
+			<div class="register-show">
+				<h2>REGISTER</h2>
+				<input type="text" placeholder="Email">
+				<input type="password" placeholder="Password">
+				<input type="password" placeholder="Confirm Password">
+				<input type="button" value="Register">
+			</div>
+		</div>
+	</div>
 
-    const add_emp = (ev)=>{
-        ev.preventDefault();  //to stop the form submitting
-        let details = {
-            'email': document.getElementById('Email').value,
-            'password': document.getElementById('password').value,
-
-          }
-      emp_data.push(details);
-
-      console.warn('added' , {emp_data} );
-      const options ={
-        method:"POST",
-        headers: {
-          'Content-Type': 'application/json'
-
-        },
-          body: JSON.stringify(details)
-        };
-        fetch('https://hr502.herokuapp.com/company/login', options)
-        .then(function(response) {
-          return response.json();
-        }).then(function(text){
-          console.log('its working');
-          console.log(text);
-          localStorage.setItem("companyId",text.companyId);
-          localStorage.setItem("token",text.token);
-          console.log(text.status);
-          if(text.status === 'OK'){
-            var emp_db = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_dashboard.html");
-             window.location.replace(emp_db);
-          }
-          else if (text.status==='Failed') {
-            alert(text.msg);
-          }
-          else{
-            alert('wrong inputs');
-          }
-        })
-      };
-      document.addEventListener('DOMContentLoaded', ()=>{
-      document.getElementById('btn').addEventListener('click', add_emp);
-    });
-  </script>
+</body>
 </html>

@@ -9,7 +9,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/employer_dashboard.css" />
+    <link rel="stylesheet" href="employer_dashboard.css" />
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -276,8 +276,7 @@
      window.location.href= invite_page;
 
    }
-    //if(localStorage.getItem('token') == null) {
-	if(1 == 2) {
+    if(localStorage.getItem('token') == null) {
       var emp_log = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_login_org.html");
        window.location.replace(emp_log);
     }
