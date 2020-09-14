@@ -1,3 +1,4 @@
+  let domain = 'hr502.herokuapp.com';
     function myFunction() //to check the length of Mobile no
     {
       if(document.getElementById('phone').value.length == 10 )
@@ -26,7 +27,7 @@ headers: {
 },
         body: JSON.stringify(detail)
       };
-      fetch('https://hr502.herokuapp.com/getMsg', option)
+      fetch('https://'+ domain +'/getMsg', option)
       .then(function(response) {
         return response.json();
       }).then(function(text){
@@ -53,7 +54,7 @@ headers: {
  },
        body: JSON.stringify(details)
      };
-     fetch('https://hr502.herokuapp.com/postCode', options)
+     fetch('https://'+ domain +'/postCode', options)
      .then(function(response) {
        return response.json();
      }).then(function(text){
