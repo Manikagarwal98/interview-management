@@ -1,3 +1,4 @@
+let domain = 'hr502.herokuapp.com'
 //------------------to check if the interviewer is logedin or not--------------------------
   if(localStorage.getItem('interviewerId') != null) {
     var intv_db = (window.location.protocol + "//" + window.location.host + "/interview-management/interviewer_dashboard.html");
@@ -27,7 +28,7 @@
       },
         body: JSON.stringify(details)
       };
-      fetch('https://hr502.herokuapp.com/interviewer/login', options)
+      fetch('https://'+domain +'/interviewer/login', options)
       .then(function(response) {
         return response.json();
       }).then(function(text){
