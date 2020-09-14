@@ -1,4 +1,5 @@
 //to check password
+    let domain = 'hr502.herokuapp.com';
          function checkPassword(form) {
              password1 = form.password1.value;
              password2 = form.password2.value;
@@ -33,7 +34,7 @@
       'Content-Type': 'application/json'},
        body: JSON.stringify(details)
            };
-           fetch('https://hr502.herokuapp.com/company/register', options)
+           fetch('https://' + domain +'/company/register', options)
            .then(function(response) {
              return response.json();
            }).then(function(text){
