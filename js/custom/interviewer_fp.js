@@ -1,3 +1,4 @@
+let domain = 'hr502.herokuapp.com'
 //-------------------function to match passwords----------------------------
            function checkPassword(form) {
                password1 = form.password1.value;
@@ -30,7 +31,7 @@
              },
                body: JSON.stringify(details)
              };
-             fetch('https://hr502.herokuapp.com/reset/password/interviewer', options)
+             fetch('https://'+domain +'/reset/password/interviewer', options)
              .then(function(response) {
                return response.json();
              }).then(function(text){

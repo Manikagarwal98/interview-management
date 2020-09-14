@@ -1,3 +1,4 @@
+let domain ='hr502.herokuapp.com'
 let emp_data = [];
 
  const add_emp = (ev)=>{
@@ -16,7 +17,7 @@ let emp_data = [];
      },
        body: JSON.stringify(details)
      };
-     fetch('https://hr502.herokuapp.com/forget/password/interviewer', options)
+     fetch('https://'+domain +'/forget/password/interviewer', options)
      .then(function(response) {
        return response.json();
      }).then(function(text){
