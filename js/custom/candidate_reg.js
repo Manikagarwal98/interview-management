@@ -57,7 +57,7 @@ headers: {
 },
       body: JSON.stringify(details)
     };
-    fetch('https:/'+ domain +'/visiter', options)
+    fetch('https://'+ domain +'/visiter', options)
     .then(function(response) {
       return response.json();
     }).then(function(text){
