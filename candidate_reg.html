@@ -9,24 +9,15 @@
    <script src="js/jquery.min.js"></script>
   </head>
   <body>
-
     <div class="container register">
                 <div class="row">
                     <div class="col-md-3 register-left">
                         <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
                         <h3>Welcome</h3>
-                        
+
                         <input type="submit" name="" value="Login"/><br/>
                     </div>
                     <div class="col-md-9 register-right">
-                      <!--  <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Employee</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Hirer</a>
-                            </li>
-                        </ul> -->
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <h3 class="register-heading">Candidate Registration</h3>
@@ -38,62 +29,31 @@
                                         <div class="form-group">
                                             <input type="email" class="form-control" placeholder="Your Email *" value="" />
                                         </div>
-                                      <!--  <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Current Address*" value="" />
-                                        </div>
-											
-                                        <div class="form-group">
-                                            <div class="maxl">
-                                                <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="male" checked>
-                                                    <span> Male </span> 
-                                                </label>
-                                                <label class="radio inline"> 
-                                                    <input type="radio" name="gender" value="female">
-                                                    <span>Female </span> 
-                                                </label>
-                                            </div>
-                                        </div> -->
                                     </div>
                                     <div class="col-md-6">
 									<div class="form-group">
                                             <input type="text" class="form-control" placeholder="Last Name *" value="" />
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Mobile Number *" value="" />
                                         </div>
-                                       <!-- <div class="form-group">
-                                            <select class="form-control">
-                                                <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
-                                                <option>What is your Birthdate?</option>
-                                                <option>What is Your old Phone Number</option>
-                                                <option>What is your Pet Name?</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
-                                        </div>
-                                        <input type="submit" class="btnRegister"  value="Register"/> -->
                                     </div>
 									<div class="col-md-12">
 									<div class="form-group">
                                    	   <textarea class="form-control" placeholder="Current Address.." id="address" required rows="3"></textarea>
                                    </div>
 									</div>
-									
+
 									<div class="col-md-6">
                                         <div class="form-group">
-                                            <select class="form-control">
+                                            <select class="form-control"  id="jb_av">
                                                 <option class="hidden"  selected disabled>Post Applied For</option>
-                                                <option>Option 1</option>
-                                                <option>Option 1</option>
-                                                <option>Option 1</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                            <input type="text" class="form-control" id="cd" placeholder="Current Designation" required>
-                                        </div>                                   
+                                        </div>
 										<div class="form-group">
                                            <input type="Text" class="form-control" id="eCTC"  placeholder="Expected CTC">
                                          </div>
@@ -116,148 +76,24 @@
                                           <input type="Text" class="form-control" id="cCTC" placeholder="Current CTC">
                                         </div>
 										<div class="form-group">
-    
+
                                        <select class="form-control" id="np" required>
                                            <option value="" selected disabled>Notice Period</option>
                                             <option>Negotiable</option>
                                             <option>Non-Negotiable</option>
                                         </select>
                                     </div>
-                                     <input type="submit" class="btnRegister"  value="Register"/> 
+                                     <input type="submit" class="btnRegister" id="btn" value="Register"/>
                                     </div>
-									
+
                                 </div>
                             </div>
-                         <!--   <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <h3  class="register-heading">Apply as a Hirer</h3>
-                                <div class="row register-form">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Email *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
-                                        </div>
-
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
-                                        </div>
-                                        <div class="form-group">
-                                            <select class="form-control">
-                                                <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
-                                                <option>What is your Birthdate?</option>
-                                                <option>What is Your old Phone Number</option>
-                                                <option>What is your Pet Name?</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="`Answer *" value="" />
-                                        </div>
-                                        <input type="submit" class="btnRegister"  value="Register"/>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>
 
             </div>
-  <script>
-  var getToken = window.location.search.slice(1);
-const options ={
-  method:"GET"
-};
-  fetch("https://hr502.herokuapp.com/comapanyjobs"+ getToken.substring(getToken.indexOf('=') + 1),options)
-    .then(function(response) {
-      return response.json();
-    }).then(function(text){
-      console.log(text);
-      console.log(text.length);
-      let arr = new Array(2);
-      for(let i=0;i<text.length;i++)
-      {
-		arr[i]=new Array(2)
-        arr[i][0] =(text[i].jobName);
-		arr[i][1]=(text[i]._id);
-      }
-      console.log(arr);
-      for (let c=0;c<arr.length;c++) {
-        var option = document.createElement("option");
-        option.data = arr[c][1];
-		option.value = arr[c][0] +"$" + arr[c][1]	;
-        option.text = arr[c][0];
-
-        document.getElementById("jb_av").appendChild(option);
-      }
-})
-</script>
-<script>
-console.log(getToken);
-console.log(getToken.substring(getToken.indexOf('=') + 1));
-  let emp_data = [];
-
-  const add_emp = (ev)=>{
-      ev.preventDefault();  //to stop the form submitting
-      let details = {
-          'fname': document.getElementById('fn').value,
-          'lname': document.getElementById('ln').value,
-          'email':document.getElementById('email').value,
-          'address':document.getElementById('address').value,
-          'jobName':document.getElementById('jb_av').value,
-          'source':document.getElementById('source').value,
-          'currentDesignation':document.getElementById('cd').value,
-          'cCTC':document.getElementById('cCTC').value,
-          'eCTC':document.getElementById('eCTC').value,
-          'noticePeriod':document.getElementById('np').value,
-          'skills':document.getElementById('skills').value,
-          'resumeUrl':document.getElementById('cv').value,
-          'companyId':getToken.substring(getToken.indexOf('=') + 1)
-        }
-      emp_data.push(details);
-      console.warn('added' , {emp_data} );
-      const options ={
-        method:"POST",
-headers: {
- 'Content-Type': 'application/json'
-
-},
-        body: JSON.stringify(details)
-      };
-      fetch('https://hr502.herokuapp.com/visiter', options)
-      .then(function(response) {
-        return response.json();
-      }).then(function(text){
-        console.log(text);
-        let errString = ("Please enter following fields: \n");
-        if(typeof(text.msg) === 'undefined' )
-         {
-          for(let err of text.errors){
-          console.log(err.msg);
-          errString += err.msg +", ";
-        }
-           alert(errString);
-         }
-         else{
-           alert("verification mail is sent to Your Email");
-         }
-      })
- };
- document.addEventListener('DOMContentLoaded', ()=>{
-      document.getElementById('btn').addEventListener('click', add_emp);
- });
-
+  <script src= 'js/custom/candidate_reg.js'>
 </script>
 
 </body>
