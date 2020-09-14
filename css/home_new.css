@@ -43,7 +43,7 @@ a{
 .login-reg-panel{
     color:#231d1d;
 }
-.login-reg-panel #label-login, 
+.login-reg-panel #label-login,
 .login-reg-panel #label-register{
     border:1px solid #9E9E9E;
     padding:5px 5px;
@@ -70,11 +70,11 @@ a{
     right:0;
     position:absolute;
     text-align:left;
-    
+
 }
 .right-log{right:50px !important;}
 
-.login-show, 
+.login-show,
 .register-show{
     z-index: 1;
     display:none;
@@ -150,4 +150,8 @@ a{
 a{
   text-decoration:none;
   color:#2c7715;
+}
+
+#OTP{
+  Visibility: hidden;
 }
