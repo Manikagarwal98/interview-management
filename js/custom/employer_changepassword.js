@@ -1,4 +1,4 @@
-
+let domain="hr502.herokuapp.com";
  let emp_data = [];
   const add_emp = (ev)=>{
       ev.preventDefault();  //to stop the form submitting
@@ -13,7 +13,7 @@
       },
         body: JSON.stringify(details)
       };
-      fetch('https://hr502.herokuapp.com/forget/password/company', options)
+      fetch('https://'+ domain +'/forget/password/company', options)
       .then(function(response) {
         return response.json();
       }).then(function(text){
