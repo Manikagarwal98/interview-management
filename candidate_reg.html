@@ -14,8 +14,6 @@
                     <div class="col-md-3 register-left">
                         <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
                         <h3>Welcome</h3>
-
-                        <input type="submit" name="" value="Login"/><br/>
                     </div>
                     <div class="col-md-9 register-right">
                         <div class="tab-content" id="myTabContent">
@@ -24,24 +22,29 @@
                                 <div class="row register-form">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                            <input type="text" class="form-control" id="fn" placeholder="First Name *" value="" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Your Email *" value="" />
+                                            <input type="email" class="form-control" id="email" placeholder="Your Email *" value="" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
 									<div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                            <input type="text" class="form-control" id="ln" placeholder="Last Name *" value="" />
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Mobile Number *" value="" />
+                                           <input type="text" class="form-control" id="cd" placeholder="Current Designation" required>
                                         </div>
                                     </div>
 									<div class="col-md-12">
 									<div class="form-group">
                                    	   <textarea class="form-control" placeholder="Current Address.." id="address" required rows="3"></textarea>
+                                   </div>
+									</div>
+                  <div class="col-md-12">
+									<div class="form-group">
+                                   	   <textarea class="form-control" placeholder="Skills..." id="skills" required rows="3"></textarea>
                                    </div>
 									</div>
 
@@ -51,9 +54,7 @@
                                                 <option class="hidden"  selected disabled>Post Applied For</option>
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                           <input type="text" class="form-control" id="cd" placeholder="Current Designation" required>
-                                        </div>
+
 										<div class="form-group">
                                            <input type="Text" class="form-control" id="eCTC"  placeholder="Expected CTC">
                                          </div>
@@ -63,7 +64,7 @@
                                     </div>
 									<div class="col-md-6">
                                         <div class="form-group">
-                                            <select class="form-control">
+                                            <select class="form-control" id='source'>
                                                 <option value="" selected disabled>Source</option>
                                                     <option>Company Website</option>
                                                     <option>Social Media</option>
