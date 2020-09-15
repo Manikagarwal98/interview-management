@@ -1,3 +1,11 @@
+.container-fluid {
+  display: none;
+}
+.container-fluid.active {
+  display: block;
+}
+
+
 body{
   background: url("D:/Projects/interview-management/img/background.jpg");
   height: 100vh;
@@ -6,22 +14,9 @@ body{
 font-family:  Arial, Helvetica, sans-serif;
 
 }
-.mnk{
-  display: flex;
-   flex-wrap: wrap;
-   justify-content: space-around;
-   color: white;
-}
-.mnk a{
-  color: white;
-}
 
-.set{
-  width: 20%;
-  text-align: center;
-}
 .interview_data ,
-.applicant_table{
+.applicant_table,.interviewer_data{
   overflow: scroll;
 }
 .nav-tabs{
@@ -34,24 +29,6 @@ font-family:  Arial, Helvetica, sans-serif;
     border-top: 1.5px solid #522708;
     border-left: 1.5px solid #522708;
     border-right: 1.5px solid #522708;
-}
-.main_sec{
-  width: 90%;
-  border-top: 10px solid #522708;
-      margin: 20px auto;
-      color: white;
-      background: transparent;
-        backdrop-filter: blur(32px);
-      padding: 20px 0px;
-      border-radius: 50px;
-      box-shadow:
-     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-     0 12.5px 10px rgba(0, 0, 0, 0.06),
-     0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-     0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-     0 100px 80px rgba(0, 0, 0, 0.12)
-    ;
 }
 
 .tab-content{
@@ -84,11 +61,10 @@ td, th{
   padding:5px;
 }
 td>a{
-  color: white;
+  color: #858796;
 }
 th{
   font-weight: bold;
-background: #633d22;;
 }
 .filter_container{
   display: flex;
@@ -110,12 +86,11 @@ background: #633d22;;
   margin: 0px 5px;
 }
 .Button{
-  background-color: #522708;
+  background-color:#4e73df;
   border: none;
   border-radius: 10px;
-  box-shadow: 0 9px 10px #431f11;
   outline: none;
-  padding: .8rem 3rem;
+  padding: .5rem 1rem;
   color: white;
 }
 .delete ,.detail_app{
@@ -129,16 +104,13 @@ padding: 8px;
     align-self: center;
     width: 90%;
     margin: 7px auto;
-    background-color: #522708;
+    background-color: #4e73df;
     border: none;
     border-radius: 10px;
-    box-shadow: 0 9px 10px #431f11;
 }
-.Button:hover ,.delete:hover,.detail_app:hover{background-color:  #441e0b}
 
 button:active {
-  background-color:  #441e0b;
-box-shadow: 0 5px #431f11;
+  background-color:  #4e73df;
   transform: translateY(4px);
   outline: none;
 }
@@ -153,14 +125,16 @@ box-shadow: 0 5px #431f11;
 #Fil_source, #Fil_status {
   margin: 0px 5px;
 margin-bottom: 10px;
-width: 160px;
+width: 150px;
 color: white;
-background-color: #633d22;
+background-color:#4e73df;
 border-radius: 10px;
-padding: .8rem 0rem;
+padding: .4rem 0rem;
 }
 #Fil_source option , #Fil_status option{
   padding: .8rem 0rem;
+  background-color: white;
+  color: #858796;
 }
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
 background-color: #522708;
@@ -214,7 +188,7 @@ margin-left: 10px;
   font-size: 2rem;
   background: transparent;
   border-color: transparent;
-  color: #522708;
+  color: Black;
   height: fit-content;
   cursor: pointer;
   align-self: center;
@@ -267,56 +241,6 @@ margin: 20px 0px;
 	margin-bottom:10px;
 }
 }
-.a {
-	background-color: #522708;
-	border: none;
-	border-radius: 10px;
-	color: white;
-  padding: 15px 25px;
-  font-size: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 20px 10px;
-  cursor: pointer;
-}
-.a:hover{
-	background-color:white!important;
-	color: #522708;
-  text-decoration: none;
-}
-@media (max-width:650px){
-.a{
-	font-size:17px;
-	margin:15px 5px;
-}
-}
-.b {
-  background-color: transparent;
-border: none;
-color: white !important;
-font-size: 20px;
-text-align: center;
-text-decoration: none;
-cursor: pointer;
-display: flex;
-margin: auto;
-margin-bottom: 50px;
-width: fit-content;
-}
-.b:hover{
-	color: #522708!important;
-}
-@media (max-width:650px){
-.b{
-	font-size:17px;
-  margin-bottom:  20px;
-}}
-@media (max-width:500px){
-.a{
-  margin-bottom:  7px 5px;
-
-}}
 
 .name{
 	margin: 15px;

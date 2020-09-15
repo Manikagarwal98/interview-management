@@ -1,9 +1,59 @@
+var header = document.getElementById("myDIV");
+var btns = header.getElementsByClassName("nav-item");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("active");
+  current[0].className = current[0].className.replace(" active", "");
+  this.className += " active";
+  });
+}
+function showdb(){
+  var a = document.getElementById("event_container");
+  var b = document.getElementById("create_intv_container");
+  var c = document.getElementById("manage_container");
+  var d = document.getElementById("create_interview_container");
+   a.classList.add("active");
+   b.classList.remove("active")
+   c.classList.remove("active");
+   d.classList.remove("active");
+}
+function showCI(){
+  var a = document.getElementById("event_container");
+  var b = document.getElementById("create_intv_container");
+  var c = document.getElementById("manage_container");
+  var d = document.getElementById("create_interview_container");
+   b.classList.add("active");
+   a.classList.remove("active")
+   c.classList.remove("active");
+   d.classList.remove("active");
+}
+function show_manage(){
+  var a = document.getElementById("event_container");
+  var b = document.getElementById("create_intv_container");
+  var c = document.getElementById("manage_container");
+  var d = document.getElementById("create_interview_container");
+   c.classList.add("active");
+   a.classList.remove("active")
+   b.classList.remove("active");
+   d.classList.remove("active");
+}
+function show_CN(){
+  var a = document.getElementById("event_container");
+  var b = document.getElementById("create_intv_container");
+  var c = document.getElementById("manage_container");
+  var d = document.getElementById("create_interview_container");
+   d.classList.add("active");
+   a.classList.remove("active")
+   b.classList.remove("active");
+   c.classList.remove("active");
+}
+
 //redirect to invite page
-let invite_page = (window.location.protocol + "//" + window.location.host + "/interview-management/invite_page.html");
- document.getElementById('invite_link').innerHTML = invite_page;
- function redirect() {
-   window.location.href= invite_page;
- }
+//let invite_page = (window.location.protocol + "//" + window.location.host + "/interview-management/invite_page.html");
+ //document.getElementById('invite_link').innerHTML = invite_page;
+ //function redirect() {
+//   window.location.href= invite_page;
+ //}
  //redirect to login page if the user is loged out
   if(localStorage.getItem('token') == null) {
     var emp_log = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_login.html");
@@ -32,29 +82,40 @@ let invite_page = (window.location.protocol + "//" + window.location.host + "/in
 }
 //------------------------api to get Company details-----------------------------------------------------
 const info ={
-  method:"GET",
-  headers: {
-    authorization: "bearer " + localStorage.getItem("token")
-  }
+method:"GET",
+headers: {
+ authorization: "bearer " + localStorage.getItem("token")
+}
 };
-  fetch("https://hr502.herokuapp.com/company/get/information",info)
-    .then(function(response) {
-      return response.json();
-    }).then(function(text){
-      const C_info = document.getElementById("company_info");
-      let cHtml = "";
-      var c_Data = text.Details[0];
-            cHtml +=
-            "</section id='top_header' class='layout'>"+
-                "<div class='name'><b>"+ c_Data.name +"</b></div>"
-            +"<div class='txt'>"+ c_Data.hrFirstName + " "+c_Data.hrLastName +"</div>" +
-            "<a class=' fa fa-map-marker b'><b style='padding:0px 5px'>"+ c_Data.address  +"</b></a>"+
-            "<div class='contact'>"+
-              `<a class='fa fa-phone a' href='tel:${c_Data.mobileNo}'><b>  ` +c_Data.mobileNo +"</b></a>"+
-               `<a class='fa fa-envelope a'  href='mailto:${c_Data.email}'>  ` + c_Data.email +"</a>" +
-            "</div>"+
-          "</section>"
-      C_info.innerHTML = cHtml;
+fetch("https://hr502.herokuapp.com/company/get/information",info)
+ .then(function(response) {
+   return response.json();
+ }).then(function(text){
+   console.log(text.Details);
+
+   const C_name = document.getElementById("company_name");
+   var name = text.Details[0];
+   C_name.innerHTML = name.name;
+
+
+   const HR_name = document.getElementById("hr_name");
+   var hr_name = text.Details[0];
+   HR_name.innerHTML = (hr_name.hrFirstName + " "+hr_name.hrLastName)
+
+
+   const C_number = document.getElementById("mobile_no");
+      let c_num = "";
+      var num = text.Details[0];
+            c_num +=
+              `<a class='fa fa-phone' href='tel:${num.mobileNo}'><b>` +num.mobileNo +"</b></a>"
+      C_number.innerHTML = c_num;
+
+      const C_mail = document.getElementById("C_mail");
+         let mail = "";
+         var mail_id = text.Details[0];
+               mail +=
+                 `<a class='fa fa-envelope '  href='mailto:${mail_id.email}'>  ` + mail_id.email +"</a>"
+         C_mail.innerHTML = mail;
 })
 //--------------------------------api to assign interviewer--------------------------------
   let itvr_data = [];
@@ -145,30 +206,33 @@ const info ={
 //---------------------------------get job list for dropdown used in create interview section------------------------------
 window.onload = getJob();
 function getJob() {
-  const ddown = {
-    method: "GET",
-  };
-  fetch(
-    "https://hr502.herokuapp.com/comapanyjobs" +
-      localStorage.getItem("companyId"),
-    ddown
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (text) {
-      let arr = [];
-      for (let i = 0; i < text.length; i++) {
-        arr.push(text[i].jobName);
-      }
-      document.getElementById("jb_av").options.length=1;
-      for (const val of arr) {
-        var option = document.createElement("option");
-        option.value = val;
-        option.text = val;
-        document.getElementById("jb_av").appendChild(option);
-      }
-    });
+   const ddown = {
+     method: "GET",
+   };
+   fetch(
+     "https://hr502.herokuapp.com/comapanyjobs" +
+       localStorage.getItem("companyId"),
+     ddown
+   )
+     .then(function (response) {
+       return response.json();
+     })
+     .then(function (text) {
+       console.log(text.length);
+       let arr = [];
+       for (let i = 0; i < text.length; i++) {
+         arr.push(text[i].jobName);
+       }
+       console.log(arr);
+       document.getElementById("jb_av").options.length = 1;
+       for (const val of arr) {
+         var option = document.createElement("option");
+         option.value = val;
+         option.text = val;
+         document.getElementById("jb_av").appendChild(option);
+       }
+
+     });
 }
 //---------------------------function to show applicants data according to the interview-------------------------------------
 var jobname_id;

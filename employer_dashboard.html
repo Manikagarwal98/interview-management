@@ -1,66 +1,174 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/employer_dashboard.css" />
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-    <title>Company Dashboard</title>
-  </head>
-  <body>
-    <div class="main_sec">
-      <div class="nav-item nav-link" id="invt">
-          <h4>Invite link:</h4>
-          <a id="invite_link" class="invite_link"onclick="redirect()"></a> </div>
-      <nav>
-        <div class="nav nav-tabs mnk" id="nav-tab" >
-          <a class="nav-item nav-link active set" id="nav-info-tab" data-toggle="tab" href="#nav-info"
-          aria-controls="nav-info" aria-selected="true">Dashboard</a>
-          <a class="nav-item nav-link set" id="nav-view-tab" data-toggle="tab" href="#nav-view"
-          aria-controls="nav-view" aria-selected="false">View</a>
-          <a class="nav-item nav-link set" id="nav-Create-tab" data-toggle="tab" href="#nav-Create"
-            aria-controls="nav-Create" aria-selected="false">Create Interview</a>
-          <a class="nav-item nav-link set" id="nav-Interviewer-tab" data-toggle="tab" href="#nav-Interviewer"
-            aria-controls="nav-Interviewer" aria-selected="false">Interviewer</a>
-          <a class="nav-item nav-link set" id="logout" onclick='logout()' href="#">Logout</a>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Dashboard</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="css/employer_dashboard.css" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template-->
+  <link href="css/admin.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="nav nav-tabs nav-dd" id="nav-tab" ><div class="line"></div><div class="line"></div><div class="line"></div>
-          <a class="nav-item nav-link active set1" id="nav-info-tab" data-toggle="tab" href="#nav-info"
-          aria-controls="nav-info" aria-selected="true">Dashboard</a>
-          <a class="nav-item nav-link set1" id="nav-view-tab" data-toggle="tab" href="#nav-view"
-          aria-controls="nav-view" aria-selected="false">View</a>
-          <a class="nav-item nav-link set1" id="nav-Create-tab" data-toggle="tab" href="#nav-Create"
-            aria-controls="nav-Create" aria-selected="false">Create Interview</a>
-          <a class="nav-item nav-link set1" id="nav-Interviewer-tab" data-toggle="tab" href="#nav-Interviewer"
-            aria-controls="nav-Interviewer" aria-selected="false">Interviewer</a>
-          <a class="nav-item nav-link set1" id="logout" onclick='logout()' href="#">Logout</a>
-        </div>
-      </nav>
-      <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-info" role="tabpanel" aria-labelledby="nav-view-tab">
-          <div id="company_info">
-        </div></div>
-        <div class="tab-pane fade" id="nav-view" role="tabpanel" aria-labelledby="nav-view-tab">
+        <div class="sidebar-brand-text mx-3"><div id="company_name"></div></div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+<div id="myDIV">
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active" onclick="showdb()" data-id="event_container">
+        <a class="nav-link">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Interview
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item" data-id="create_intv_container" onclick="showCI()">
+        <a class="nav-link">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Create Interview</span>
+        </a>
+
+      </li>
+
+      <!-- Nav Item - Utilities Collapse Menu -->
+
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Interviewer
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item" data-id="manage_container" onclick="show_manage()">
+        <a class="nav-link">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Manage Interviewer</span>
+        </a>
+      </li>
+
+      <!-- Nav Item - Charts -->
+      <li class="nav-item" data-id="create_interview_container" onclick="show_CN()">
+        <a class="nav-link">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Assign Interviewer</span></a>
+      </li>
+      </div>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+         <!-- Topbar Search -->
+          <div id="mobile_no"></div>
+		  <div class="topbar-divider d-none d-sm-block"></div>
+		  <div id="C_mail"></div>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+
+            <!-- Nav Item - Messages -->
+
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><div id="hr_name"></div></span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+        <div class="container-fluid active" id="event_container">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            </div>
           <div class="interview_data">
             <table>
               <thead>
@@ -125,46 +233,41 @@
             <tbody id="tableData"></tbody>
           </table>
           </div>
-          <button onclick="exportTableToExcel('tableexp')" style="margin:10px 0px"class="Button">Download To Excel</button>
+          <button onclick="exportTableToExcel('tableexp')" style="margin:10px 0px"class="Button"><i class="fas fa-download fa-sm text-white-50"></i>  Generte Report</button>
 
-        </div>
+        <!-- /.container-fluid -->
       </div>
-        <div
-          class="tab-pane fade"
-          id="nav-Create"
-          role="tabpanel"
-          aria-labelledby="nav-Create-tab"
-        >
-          <form>
-            <div class="form-group">
-              <label for="post">Vacancy for</label>
-              <input
-                type="text"
-                class="form-control"
-                id="vac_for"
-                placeholder="Vacancy for Post..."
-                required
-              />
+    </div>
+        <!-- Begin Page Content -->
+        <div class="container-fluid" id="create_intv_container">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Create Interview</h1>
+
+          </div>
+
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Interview Details</h6>
             </div>
-            <div class="form-group">
-              <label for="post">No. of Vacancy</label>
-              <input
-                type="number"
-                class="form-control"
-                id="no_v"
-                placeholder="no.."
-              />
-            </div>
-            <div class="form-group">
-              <label for="skills">Skills</label>
-              <input
-                type="text"
-                class="form-control"
-                id="skills_req"
-                placeholder="Skills required..."
-              />
-            </div>
-            <label for="post">Date</label>
+
+            <form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Vacancy For</label>
+    <input  type="text"  class="form-control"id="vac_for"placeholder="Vacancy for Post..."required/>
+  </div>
+  <div class="form-group">
+    <label for="vacancies">No. of Vacancy</label>
+    <input type="num" class="form-control" id="no_v" placeholder="No. of Vacancy">
+  </div>
+  <div class="form-group">
+    <label for="skills">Skills Required</label>
+    <input type="text" class="form-control" id="skills_req" placeholder="Skills Required">
+  </div>
+  <div class="form-group">
+<label for="post">Date</label>
+</div>
             <div class="form-group date_time">
               <div class="box">
                 <label for="post">From</label>
@@ -175,7 +278,10 @@
                 <input type="date" id="d_to" class="form-control" required />
               </div>
             </div>
-            <label for="post">Time</label>
+            <div class="form-group">
+          <label for="post">Time</label>
+          </div>
+
             <div class="form-group date_time">
               <div class="box">
                 <label for="post">From</label>
@@ -186,73 +292,28 @@
                 <input type="time" id="t_to" class="form-control" required />
               </div>
             </div>
-            <button type="submit" id="btn" class="Button">
-              Submit
-            </button>
-          </form>
+
+      <button type="submit" id="btn" class="btn btn-primary">Submit</button>
+ </form>
+  </div>
+  <!-- /.container-fluid -->
+      </div>
+      <!-- End of Main Content -->
+      <!-- Begin Page Content -->
+      <div class="container-fluid" id="manage_container">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Manage Interviewer</h1>
+
         </div>
-        <div
-          class="tab-pane fade"
-          id="nav-Interviewer"
-          role="tabpanel"
-          aria-labelledby="nav-Interviewer-tab"
-        >
-          <ul class="nav nav-pills Interview" id="pills-tab" role="tablist">
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                id="create-tab"
-                data-toggle="pill"
-                href="#create"
-                role="tab"
-                aria-controls="pills-home"
-                aria-selected="true"
-                >Create</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                id="Manage-tab"
-                data-toggle="pill"
-                href="#Manage"
-                role="tab"
-                aria-controls="pills-profile"
-                aria-selected="false"
-                >Manage</a
-              >
-            </li>
-          </ul>
-          <div class="tab-content" id="pills-tabContent">
-            <div
-              class="tab-pane fade show active"
-              id="create"
-              role="tabpanel"
-              aria-labelledby="create-tab"
-            >
-              <form>
-                <div class="form-group">
-                  <label for="Email">Email address</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    required
-                    id="int_email"
-                    aria-describedby="emailHelp"
-                    placeholder="Enter email"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="Post">Post Applied for </label>
-                  <select class="form-control" id="jb_av" required>
-                    <option value="" selected disabled>Please select</option>
-                  </select>
-                </div>
-                <button type="submit" id="Interviewer_btn" class="Button">Create</button>
-              </form>
-            </div>
-            <div class="tab-pane fade"  id="Manage"  role="tabpanel"  aria-labelledby="Manage-tabtab">
-              <table>
+
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Interviewer Details</h6>
+          </div>
+          <div class="interviewer_data">
+          <table>
               <thead>
                 <tr>
 
@@ -264,530 +325,97 @@
 
               <tbody id="interviewer_data"></tbody>
             </table>
-            </div>
           </div>
+      </div>
+      <!-- /.container-fluid -->
+      </div>
+      <!-- Begin Page Content -->
+      <div class="container-fluid" id="create_interview_container">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Assign Interviewer</h1>
+
+        </div>
+
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Interviewer Details</h6>
+          </div>
+
+          <form>
+<div class="form-group">
+  <label for="intv_email">Email Address</label>
+  <input type="email" class="form-control" id="int_email" aria-describedby="emailHelp" placeholder="Email Address">
+
+</div>
+<div class="form-group">
+  <label for="Post">Post For</label>
+  <select class="form-control" id="jb_av">
+    <option value="" selected disabled>Please select</option>
+                  </select>
+</div>
+    <button type="submit" id="Interviewer_btn" class="btn btn-primary">Create</button>
+</form>
+</div>
+<!-- /.container-fluid -->
+    </div>
+    <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="#" onclick="logout()">Logout</a>
         </div>
       </div>
     </div>
-  </body><script>
-  let invite_page = (window.location.protocol + "//" + window.location.host + "/interview-management/invite_page.html");
-   document.getElementById('invite_link').innerHTML = invite_page;
-   function redirect() {
-     window.location.href= invite_page;
-
-   }
-    //if(localStorage.getItem('token') == null) {
-	if(1 == 2) {
-      var emp_log = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_login_org.html");
-       window.location.replace(emp_log);
-    }
-  </script>
-  <script>
-    function exportTableToExcel(tableexp, filename = ''){
-    var downloadLink;
-    var dataType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
-    var tableSelect = document.getElementById(tableexp);
-    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-    filename = filename?filename+'.xls':'excel_data.xls';
-    downloadLink = document.createElement("a");
-
-    document.body.appendChild(downloadLink);
-
-    if(navigator.msSaveOrOpenBlob){
-        var blob = new Blob(['\ufeff', tableHTML], {
-            type: dataType
-        });
-
-        navigator.msSaveOrOpenBlob( blob, filename);
-    }
-    else{
-
-        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-        downloadLink.download = filename;
-        downloadLink.click();
-    }
-}
-  </script>
-  <script>
-  const info ={
-    method:"GET",
-    headers: {
-      authorization: "bearer " + localStorage.getItem("token")
-    }
-  };
-    fetch("https://hr502.herokuapp.com/company/get/information",info)
-      .then(function(response) {
-        return response.json();
-      }).then(function(text){
-        console.log(text.Details);
-
-        const C_info = document.getElementById("company_info");
-        let cHtml = "";
-        var c_Data = text.Details[0];
-        console.log(c_Data);
-              cHtml +=
-              "</section id='top_header' class='layout'>"+
-                  "<div class='name'><b>"+ c_Data.name +"</b></div>"
-              +"<div class='txt'>"+ c_Data.hrFirstName + " "+c_Data.hrLastName +"</div>" +
-              "<a class=' fa fa-map-marker b'><b style='padding:0px 5px'>"+ c_Data.address  +"</b></a>"+
-              "<div class='contact'>"+
-                `<a class='fa fa-phone a' href='tel:${c_Data.mobileNo}'><b>  ` +c_Data.mobileNo +"</b></a>"+
-
-					       `<a class='fa fa-envelope a'  href='mailto:${c_Data.email}'>  ` + c_Data.email +"</a>" +
-	            "</div>"+
-            "</section>"
-        console.log(cHtml);
-
-        C_info.innerHTML = cHtml;
+    </div>
+</body>
+<script src="js/custom/employer_dashboard.js"></script>
+<!-- Bootstrap core JavaScrip-->
 
 
-  })
-  </script>
-  <script>
-    let itvr_data = [];
-
-    const add_itvr = (ev) => {
-      ev.preventDefault();
-      let ids = {
-        email: document.getElementById("int_email").value,
-        profile: document.getElementById("jb_av").value
-      };
-      emp_data.push(ids);
-
-      console.warn("added", { itvr_data });
-      const opt = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: "bearer " + localStorage.getItem("token"),
-        },
-        body: JSON.stringify(ids),
-      };
-      fetch("https://hr502.herokuapp.com/company/add/interviewer", opt)
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (text) {
-          console.log(text);
-          console.log(text.msg);
-          console.log(localStorage.getItem("token"));
-          if(text.msg === "Email is sent"){
-            alert("Mail is sent to interviewer");
-          }
-          else{
-            alert("Fill all the inputs");
-          }
-        });
-    };
-    document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("Interviewer_btn").addEventListener("click", add_itvr);
-    });
-  </script>
-  <script>
-    let emp_data = [];
-
-    const add_emp = (ev) => {
-      ev.preventDefault(); //to stop the form submitting
-      let details = {
-        jobName: document.getElementById("vac_for").value,
-        vacancy: document.getElementById("no_v").value,
-        skills: document.getElementById("skills_req").value,
-        datefrom: document.getElementById("d_from").value,
-        dateto: document.getElementById("d_to").value,
-        timefrom: document.getElementById("t_from").value,
-        timeto: document.getElementById("t_to").value,
-      };
-      emp_data.push(details);
-
-      console.warn("added", { emp_data });
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: "bearer " + localStorage.getItem("token"),
-        },
-        body: JSON.stringify(details),
-      };
-      fetch("https://hr502.herokuapp.com/addJobs", options)
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (text) {
-          console.log(text);
-          console.log(localStorage.getItem("token"));
-           let errString = ("Please enter following fields: \n");
-          if(typeof(text.msg) === 'undefined' )
-           {
-            for(let err of text.errors){
-            console.log(err.msg);
-            errString += err.msg +", ";
-          }
-             alert(errString);
-           }
-           else{
-             alert(text.msg);
-
-           }
-          getJob();
-        });
-    };
-    document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("btn").addEventListener("click", add_emp);
-    });
-    function logout() {
-      window.localStorage.removeItem('token');
-      window.localStorage.removeItem('companyId');
-      var emp_log = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_login.html");
-      window.location.replace(emp_log);
-    }
-  </script>
-  <script>
-  window.onload = getJob();
- function getJob() {
-    const ddown = {
-      method: "GET",
-    };
-    fetch(
-      "https://hr502.herokuapp.com/comapanyjobs" +
-        localStorage.getItem("companyId"),
-      ddown
-    )
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (text) {
-        console.log(text.length);
-        let arr = [];
-        for (let i = 0; i < text.length; i++) {
-          arr.push(text[i].jobName);
-        }
-        console.log(arr);
-        document.getElementById("jb_av").options.length=1;
-        for (const val of arr) {
-          var option = document.createElement("option");
-          option.value = val;
-          option.text = val;
-          document.getElementById("jb_av").appendChild(option);
-        }
-
-      });
-}
-  </script>
-  <script>
-  var jobname_id;
-  function fun(id) {
-const disBtn1 = document.querySelector(".detail_app");
-const dis1 = document.querySelector(".applicant_data");
-const closeBtn = document.querySelectorAll(".close-btn");
-console.log(id.getAttribute("data"));
-jobname_id = id.getAttribute("data");
-console.log(jobname_id);
-renderData();
-  dis1.classList.add("open_applicant_data");
-closeBtn[0].addEventListener("click", function () {
-  dis1.classList.remove("open_applicant_data");
-});}
-  </script>
-  <script>
-  const job_tb = {
-    method: "GET",
-  };
-  fetch(
-    "https://hr502.herokuapp.com/comapanyjobs" +
-      localStorage.getItem("companyId"),
-    job_tb
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (text) {
-      console.log(text);
-      window.onload = () => {
-        loadTable(text);
-      };
-      loadTable();
-      function loadTable() {
-        const job_tbl = document.getElementById("job_table");
-        let tabdata = "";
-        for (let person of text) {
-  console.log(text);
-  console.log(person._id);
-              tabdata +=
-              "<tr><td>" +
-              person.jobName+
-              "</td><td>" +
-            person.datefrom +" To " +person.dateto +
-              "</td><td>" +
-            person.timefrom +" To " +person.timeto+
-            `</td><td><button class='detail_app' data=${person._id} onclick='fun(this)'>Details</button></td><tr>`;
-          }
-        console.log(tabdata);
-
-        job_tbl.innerHTML = tabdata;
-      }
-    });
-  </script>
-  <script>
-    var activities = document.getElementById("Fil_source");
-    var activitie = document.getElementById("Fil_status");
-    activities.addEventListener("change", function () {
-      renderData();
-    });
-    activitie.addEventListener("change", function () {
-      renderData();
-    });
-	   window.onload = () => {
-            renderData();
-             interviewer_table();
-          };
-    function renderData() {
-      const tbl = {
-        method: "GET",
-        headers: {
-          authorization: "bearer " + localStorage.getItem("token"),
-        },
-      };
-      fetch("https://hr502.herokuapp.com/visiter", tbl)
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (text) {
-          console.log(text);
-          window.onload = () => {
-            loadTableData(text);
-          };
-          loadTableData(text);
-          function loadTableData(text, selectedSource) {
-            const tableBody = document.getElementById("tableData");
-            let dataHtml = "";
-            for (let person of text) {
-              if(person.jobName_id=== jobname_id){
-              if (person.source === document.getElementById("Fil_source").value && person.status === document.getElementById("Fil_status").value) {
-                console.log('source yes status yes ');
-                dataHtml +=
-                  "<tr><td>" +
-                  person.fname +
-                  " " +
-                  person.lname +
-                  "</td><td>" +
-                  person.jobName +
-                  "</td><td>" +
-                  person.source +
-                  "</td><td>" +
-                  person.status +
-                  "</td><td>" +
-                  person.email +
-                  "</td><td>" +
-                  person.mobileNo +  "</td><td>" +person.currentDesignation +"</td><td>" + person.feedback +
-                  "</td><td>" +
-                  person.address +
-                  "</td><td>" +
-                  person.cCTC +
-                  "</td><td>" +
-                  person.eCTC +
-                  "</td><td>" +
-                  person.noticePeriod +
-                  "</td><td>" +
-                  person.skills +
-                  "</td><td>" +
-                  `<a href='${person._id}'>Open_CV</a>` +
-                  "</td></tr>";
-              }  else if (
-                person.source === document.getElementById("Fil_source").value && document.getElementById("Fil_status").value === ""
-              ) {
-                console.log('source yes status no ');
-                dataHtml +=
-                "<tr><td>" +
-                person.fname +
-                " " +
-                person.lname +
-                "</td><td>" +
-                person.jobName +
-                "</td><td>" +
-                person.source +
-                "</td><td>" +
-                person.status +
-                "</td><td>" +
-                person.email +
-                "</td><td>" +
-                person.mobileNo +  "</td><td>" +person.currentDesignation +"</td><td>" + person.feedback +
-                "</td><td>" +
-                person.address +
-                "</td><td>" +
-                person.cCTC +
-                "</td><td>" +
-                person.eCTC +
-                "</td><td>" +
-                person.noticePeriod +
-                "</td><td>" +
-                person.skills +
-                "</td><td>" +
-              `<a href='${person.resumeUrl}'>Open_CV</a>` +
-                "</td></tr>";
-              }
-              else if (
-                document.getElementById("Fil_source").value === "" &&  person.status === document.getElementById("Fil_status").value
-              ) {
-                console.log('source no status yes ');
-                dataHtml +=
-                "<tr><td>" +
-                person.fname +
-                " " +
-                person.lname +
-                "</td><td>" +
-                person.jobName +
-                "</td><td>" +
-                person.source +
-                "</td><td>" +
-                person.status +
-                "</td><td>" +
-                person.email +
-                "</td><td>" +
-                person.mobileNo +  "</td><td>" +person.currentDesignation +"</td><td>" + person.feedback +
-                "</td><td>" +
-                person.address +
-                "</td><td>" +
-                person.cCTC +
-                "</td><td>" +
-                person.eCTC +
-                "</td><td>" +
-                person.noticePeriod +
-                "</td><td>" +
-                person.skills +
-                "</td><td>" +
-                `<a href='${person.resumeUrl}'>Open_CV</a>` +
-                "</td></tr>";
-              }
-              else if (
-                document.getElementById("Fil_source").value === "" && document.getElementById("Fil_status").value === ""
-              ) { console.log('source no status no ');
-                dataHtml +=
-                "<tr><td>" +
-                person.fname +
-                " " +
-                person.lname +
-                "</td><td>" +
-                person.jobName +
-                "</td><td>" +
-                person.source +
-                "</td><td>" +
-                person.status +
-                "</td><td>" +
-                person.email +
-                "</td><td>" +
-                person.mobileNo +  "</td><td>" +person.currentDesignation +"</td><td>" + person.feedback +
-                "</td><td>" +
-                person.address +
-                "</td><td>" +
-                person.cCTC +
-                "</td><td>" +
-                person.eCTC +
-                "</td><td>" +
-                person.noticePeriod +
-                "</td><td>" +
-                person.skills +
-                "</td><td>" +
-                `<a href='${person.resumeUrl}'>Open_CV</a>` +
-                "</td></tr>";
-              }
-            }}
-            console.log(dataHtml);
-            console.log(document.getElementById("Fil_source").value);
-            tableBody.innerHTML = dataHtml;
-          }
-        });
-    }
-  </script>
-
-
-
-
-
-
-
-
-  <script>
-
-  function interviewer_table() {
-
-  const intv_table = {
-    method: "GET",
-    headers: {
-      authorization: "bearer " + localStorage.getItem("token"),
-    },
-  };
-  fetch("https://hr502.herokuapp.com/company/get/interviewers", intv_table)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (text) {
-      console.log(text);
-      console.log(text.interviewer);
-      window.onload = () => {
-        loadTableData(text_tbl);
-      };
-      var text_tbl = text.interviewer;
-      loadTableData(text_tbl);
-      function loadTableData(text_tbl, selectedSource) {
-        const tableBody = document.getElementById("interviewer_data");
-        let data_Html = "";
-        for (let person of text_tbl) {
-  console.log(text);
-  console.log(person._id);
-              data_Html +=
-              "<tr><td>" + person.email + "</td><td>" + person.profile
-              +`</td><td><button class='delete' id="dlt_btn" data=${person._id} onclick='dlt(this)'>Delete</button></td><tr>`;
-          }
-        console.log(data_Html);
-
-        tableBody.innerHTML = data_Html;
-      }
-    });}
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-  <script>
-  var dlt_id;
-  function dlt(id) {
-dlt_id = id.getAttribute("data");
-console.log(dlt_id);
-let dlt_data=[];
-    let ids = {
-
-      id: dlt_id
-    };
-    dlt_data.push(ids);
-
-    console.warn("added", { dlt_data });
-    const opt = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: "bearer " + localStorage.getItem("token"),
-      },
-      body: JSON.stringify(ids),
-    };
-    fetch("https://hr502.herokuapp.com/company/delete/interviewer", opt)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (text) {
-        console.log(text);
-        if(text.status === 'OK'){
-           interviewer_table();
-        }
-
-      });
-
-};
-  </script>
+</script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="js/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="js/admin.min.js"></script>
+<!-- Page level plugins -->
+<script src="js/jquery.dataTables.min.js"></script>
+<script src="js/dataTables.bootstrap4.min.js"></script>
+<!-- Page level custom scripts -->
+<script src="js/datatables-demo.js"></script>
 </html>
