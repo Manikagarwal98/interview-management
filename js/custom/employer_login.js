@@ -1,3 +1,8 @@
+//---------------------redirect to employer register page------------------------------
+function emp_register(){
+var emp_reg = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_reg.html");
+window.location.href = emp_reg;
+}
 //to check if user is already loged in or not---------------
   if(localStorage.getItem('token') != null) {
       var emp_db = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_dashboard.html");
