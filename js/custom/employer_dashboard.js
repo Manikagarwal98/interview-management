@@ -47,6 +47,27 @@ function show_CN(){
    b.classList.remove("active");
    c.classList.remove("active");
 }
+//--------------------------------copy invite link-----------------------------------
+function copy_link() {
+  var elm = document.getElementById("invite_link");
+  if(document.body.createTextRange) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(elm);
+    range.select();
+    document.execCommand("Copy");
+    alert("Copied div content to clipboard");
+  }
+  else if(window.getSelection) {
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(elm);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand("Copy");
+    alert("Invite link copied clipboard");
+  }
+}
+
 //----------------------redirect to invite page--------------------------------------
 let invite_page = (window.location.protocol + "//" + window.location.host + "/interview-management/invite_page.html?token=" + localStorage.getItem('companyId'));
  document.getElementById('invite_link').innerHTML = invite_page;
