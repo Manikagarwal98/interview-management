@@ -49,11 +49,11 @@ function show_CN(){
 }
 
 //redirect to invite page
-//let invite_page = (window.location.protocol + "//" + window.location.host + "/interview-management/invite_page.html");
- //document.getElementById('invite_link').innerHTML = invite_page;
- //function redirect() {
-//   window.location.href= invite_page;
- //}
+let invite_page = (window.location.protocol + "//" + window.location.host + "/interview-management/invite_page.html");
+ document.getElementById('invite_link').innerHTML = invite_page;
+ function redirect() {
+   window.location.href= invite_page;
+ }
  //redirect to login page if the user is loged out
   if(localStorage.getItem('token') == null) {
     var emp_log = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_login.html");
