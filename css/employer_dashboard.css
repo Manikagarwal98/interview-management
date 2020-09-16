@@ -1,5 +1,3 @@
-
-
 body{
   height: 100vh;
   background-size: 100% 100%;
@@ -111,11 +109,14 @@ padding: 8px;
     border: none;
     border-radius: 10px;
 }
+button:not(:disabled) {
+    outline: none !important;
+}
 
 button:active {
   background-color:  #4e73df;
   transform: translateY(4px);
-  outline: none;
+  outline: none !important;
 }
 .filters{
   display: flex;
