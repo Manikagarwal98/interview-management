@@ -1,63 +1,12 @@
 body{
-  background: url("background.jpg");
   height: 100vh;
   background-size: 100% 100%;
  background-attachment: fixed;
 font-family:  Arial, Helvetica, sans-serif;
 
 }
-.mnk{
-  display: flex;
-   flex-wrap: wrap;
-   justify-content: space-around;
-   color: white;
-}
-a{
-  color: white;
-}
-.nav-tabs{
-  border-color: #522708;
-}
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    color: #495057;
-    background-color: #fff;
-
-    border-top: 1px solid #522708;
-    border-left: 1px solid #522708;
-    border-right: 1px solid #522708;
-}
-.set{
-  width: 25%;
-  text-align: center;
-}
-
-.main_sec{
-  width: 90%;
-  border-top: 10px solid #522708;
-      margin: 20px auto;
-      color: white;
-      background: transparent;
-        backdrop-filter: blur(32px);
-      padding: 20px 0px;
-      border-radius: 50px;
-      box-shadow:
-     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-     0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-     0 12.5px 10px rgba(0, 0, 0, 0.06),
-     0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-     0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-     0 100px 80px rgba(0, 0, 0, 0.12)
-    ;
-}
 .tab-content{
   padding: 5%;
-}
-.date_time{
-  display: flex;
-}
-.box{
-  padding: 5px;
-  margin: 5px;
 }
 .Interview{
   display: flex;
@@ -77,35 +26,26 @@ td, th{
   padding:5px;
 }
 td>a{
-  color: white;
+  color: #858796;
 }
 th{
   font-weight: bold;
-background: #633d22;;
+}
+.nav-item{
+  cursor: pointer;
 }
 #nav-view{
   overflow: scroll;
 }
-#invite_link{
-  width: inherit;
-  border: 1px solid grey;
-  padding:5px;
-
-}
 #jb_av{
   width: auto;
   color: white;
-background-color: #633d22;
+background-color: #4e73df;
 }
-#invt{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width:100%;
-
-}
-#invt>h4{
-    width:auto;
+#jb_av option{
+  padding: .8rem 0rem;
+  background-color: white;
+  color: #858796;
 }
 .dis{
   position: fixed;
@@ -146,16 +86,14 @@ background-color: #633d22;
     align-self: center;
     width: 90%;
     margin: 7px auto;
-    background-color: #522708;
+    background-color:#4e73df;
     border: none;
     border-radius: 10px;
-    box-shadow: 0 9px 10px #431f11;
 }
-.dis-btn:hover ,.feed_btn:hover {background-color:  #441e0b}
+.dis-btn:hover ,.feed_btn:hover {background-color:  #4e73df}
 
 button:active ,.feed_btn:active{
   outline: none;
-  background-color:  #441e0b;
-  box-shadow: 0 5px #431f11;
+  background-color: #4e73df;
   transform: translateY(4px);
 }

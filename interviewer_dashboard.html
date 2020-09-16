@@ -1,223 +1,239 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="interviewer_dashboard.css">
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<html lang="en">
 
-    <title>Dashboard</title>
-  </head>
-  <body>
-    <div class="main_sec">
-    <nav>
-      <div class="nav nav-tabs mnk" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active set" id="nav-view-tab" data-toggle="tab" href="#nav-view" aria-controls="nav-view" aria-selected="true">View</a>
-        <a class="nav-item nav-link set" id="logout"  onclick="logout()" href="interviewer_login.html">Logout</a>
-      </div>
-    </nav>
-    <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-view" role="tabpanel" aria-labelledby="nav-view-tab">
-      <div class="form-group">
-          <label>Select Interview for</label>
-          <select class="form-control" id="jb_av" required>
-            <option value="" selected disabled>Please select</option>
-          </select>
-      </div>
+<head>
 
-      <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Applied For</th>
-          <th>Source</th>
-          <th>Application Status</th>
-          <th>Email</th>
-          <th>phone no.</th>
-          <th>current Designation</th>
-          <th>Address</th>
-          <th>Current CTC</th>
-          <th>Expected CTC</th>
-          <th>Notice Period</th>
-          <th>Skills</th>
-          <th>CV link</th>
-          <th>Feedback</th>
-        </tr>
-      </thead>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-      <tbody id="tableData"></tbody>
-    </table></div>
-      </div>
-    </div>
-    <div class="dis">
-      <div class="discription-container">
-        <h3>Feedback</h3>
-        <form class="feed">
-          <div class="form-group">
-              <label for="Status">Status</label>
-          <select class="form-control" id='status' required>
-            <option selected>Not-seen</option>
-            <option>Shortlisted</option>
-            <option>Rejected</option>
-            <option>In-process</option>
-            <option>On hold</option>
-          </select>
+  <title>Dashboard</title>
+
+  <!-- Custom fonts for this template-->
+  <link rel="stylesheet" href="css/interviewer_dashboard.css">
+  <link href="css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/admin.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
         </div>
-          <div class="form-group">
-              <label for="remark" >Feedback</label>
-              <textarea class="form-control" placeholder="Any remark.." id="remark" rows="3"></textarea>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Charts -->
+      <li class="nav-item active">
+        <a class="nav-link">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Applicants</span></a>
+      </li>
+
+
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+         <!-- Topbar Search -->
+		  <div class="topbar-divider d-none d-sm-block"></div>
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user" aria-hidden="true"></i>
+
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Applicant details</h1>
+
           </div>
-          <button type="submit" id='feed_btn' class=" close-btn feed_btn" >Submit</button>
-        </form>
+
+          <div class="card shadow mb-4">
+
+            <div class="tab-content" id="nav-tabContent">
+               <div class="tab-pane fade show active" id="nav-view" role="tabpanel" aria-labelledby="nav-view-tab">
+                 <div class="form-group">
+                     <label>Show Details For</label>
+                     <select class="form-control" id="jb_av" required>
+                       <option value="" selected disabled>Please select</option>
+                     </select>
+                 </div>
+
+                 <table>
+                 <thead>
+                   <tr>
+                     <th>Name</th>
+                     <th>Applied For</th>
+                     <th>Source</th>
+                     <th>Application Status</th>
+                     <th>Email</th>
+                     <th>phone no.</th>
+                     <th>current Designation</th>
+                     <th>Address</th>
+                     <th>Current CTC</th>
+                     <th>Expected CTC</th>
+                     <th>Notice Period</th>
+                     <th>Skills</th>
+                     <th>CV link</th>
+                     <th>Feedback</th>
+                   </tr>
+                 </thead>
+
+                 <tbody id="tableData"></tbody>
+               </table></div>
+                 </div>
+               </div>
+               <div class="dis">
+                 <div class="discription-container">
+                   <h3>Feedback</h3>
+                   <form class="feed">
+                     <div class="form-group">
+                         <label for="Status">Status</label>
+                     <select class="form-control" id='status' required>
+                       <option selected>Not-seen</option>
+                       <option>Shortlisted</option>
+                       <option>Rejected</option>
+                       <option>In-process</option>
+                       <option>On hold</option>
+                     </select>
+                   </div>
+                     <div class="form-group">
+                         <label for="remark" >Feedback</label>
+                         <textarea class="form-control" placeholder="Any remark.." id="remark" rows="3"></textarea>
+                     </div>
+                     <button type="submit" id='feed_btn' class=" close-btn feed_btn" >Submit</button>
+                   </form>
+                 </div>
+               </div>
+
+          </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="#" onclick="logout()">Logout</a>
+        </div>
       </div>
     </div>
-    <script>
-      if(localStorage.getItem('intv_token') == null) {
-        var intv_log = (window.location.protocol + "//" + window.location.host + "/interview-management/interviewer_login.html");
-         window.location.replace(intv_log);
-      }
-    </script>
-	<script>
-  var cndt_id;
-  function fun(id) {
-const disBtn1 = document.querySelector(".dis-btn");
-const dis1 = document.querySelector(".dis");
-const closeBtn = document.querySelectorAll(".close-btn");
-console.log(id.getAttribute("data"));
-cndt_id = id.getAttribute("data");
-console.log(cndt_id);
-  dis1.classList.add("open-dis");
-closeBtn[0].addEventListener("click", function () {
-  dis1.classList.remove("open-dis");
-});}
-  </script>
+   </div>
+<script src="js/custom/interviewer_dashboard.js">
+
+</script>
+   <!-- Bootstrap core JavaScript-->
+   <script src="js/jquery.min.js"></script>
+   <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="js/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/admin.min.js"></script>
+
+
+  <!-- Page level plugins -->
+  <script src="js/jquery.dataTables.min.js"></script>
+  <script src="js/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/datatables-demo.js"></script>
+
+
+
 </body>
-<script>
-const options ={
-method:"GET",
-headers: {
-  authorization: "bearer " + localStorage.getItem("intv_token")
-}
-};
-fetch('https://hr502.herokuapp.com/interviewer/getMyProfiles',options)
-  .then(function(response) {
-    return response.json();
-  }).then(function(text){
-    console.log(text.profile);
-    console.log(text.profile.length);
-    for (const val of text.profile) {
-      var option = document.createElement("option");
-      option.value = val;
-      option.text = val;
-      document.getElementById("jb_av").appendChild(option);
-    }
-  })
-</script>
-<script>
 
-function logout() {
-  var intv_log = (window.location.protocol + "//" + window.location.host + "/interview-management/interviewer_login.html");
-  window.location.replace(intv_log);
-window.localStorage.removeItem('intv_token');
-window.localStorage.removeItem('interviewerId');
-}
-</script>
-<script>
-var activities = document.getElementById("jb_av");
-activities.addEventListener("change", function () {
-renderData();
-
-});
-window.onload = () => {
-      renderData();
-    };
-
-function renderData() {
-let emp_data = [];
-  let details = {
-    profile:document.getElementById('jb_av').value
-  };
-  emp_data.push(details);
-
-const tbl = {
-  method: "POST",
-  headers: {
-      "Content-Type": "application/json",
-    authorization: "bearer " + localStorage.getItem("intv_token"),
-  },  body: JSON.stringify(details),
-};
-fetch("https://hr502.herokuapp.com/intervier/get/applications", tbl)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (text) {
-    console.log(text);
-    window.onload = () => {
-      loadTableData(text);
-    };
-    loadTableData(text);
-    function loadTableData(text, selectedSource) {
-      const tableBody = document.getElementById("tableData");
-      let dataHtml = "";
-      for (let person of text) {
-console.log(text);
-console.log(person._id);
-            dataHtml +=
-            "<tr><td>" +
-            person.fname +
-            " " +
-            person.lname +
-            "</td><td>" +
-            person.jobName +
-            "</td><td>" +
-            person.source +
-            "</td><td>" +
-            person.status +
-            "</td><td>" +
-            person.email +
-            "</td><td>" +  person.mobileNo +  "</td><td>" + person.currentDesignation +  "</td><td>" + person.address + "</td><td>" + person.cCTC +"</td><td>" +
-            person.eCTC +  "</td><td>" +  person.noticePeriod +"</td><td>" + person.skills +  "</td><td>" +`<a href='${person.resumeUrl}'>Open_CV</a>` +`</td><td><button class='dis-btn' data=${person._id} onclick='fun(this)'>feedback</button></td><tr>`;
-        }
-      console.log(dataHtml);
-
-      tableBody.innerHTML = dataHtml;
-    }
-  });}
-</script>
-<script>
-  let feed_data = [];
-
-  const add_feed = (ev) => {
-    ev.preventDefault(); //to stop the form submitting
-    let ids = {
-      status: document.getElementById("status").value,
-      feedback: document.getElementById("remark").value,
-      applicatantId: cndt_id
-    };
-    feed_data.push(ids);
-
-    console.warn("added", { feed_data });
-    const opt = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: "bearer " + localStorage.getItem("intv_token"),
-      },
-      body: JSON.stringify(ids),
-    };
-    fetch("https://hr502.herokuapp.com/interviewer/post/review", opt)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (text) {
-        console.log(text);
-        renderData();
-      });
-  };
-  document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("feed_btn").addEventListener("click", add_feed);
-  });
-</script>
 </html>

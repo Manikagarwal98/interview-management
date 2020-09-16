@@ -140,13 +140,9 @@ padding: .4rem 0rem;
   background-color: white;
   color: #858796;
 }
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
-background-color: #522708;
+.nav-item{
+  cursor: pointer;
 }
-.nav-pills a{
-  color: #522708;
-}
-
 #Manage {
     overflow: scroll;
 }
