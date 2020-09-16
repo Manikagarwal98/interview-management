@@ -471,14 +471,19 @@ fetch("https://hr502.herokuapp.com/company/get/interviewers", intv_table)
 var dlt_id;
 function dlt(id) {
 dlt_id = id.getAttribute("data");
+console.log(dlt_id);
 let dlt_data=[];
   let ids = {
+
     id: dlt_id
   };
   dlt_data.push(ids);
+
+  console.warn("added", { dlt_data });
   const opt = {
     method: "POST",
     headers: {
+      "Content-Type": "application/json",
       authorization: "bearer " + localStorage.getItem("token"),
     },
     body: JSON.stringify(ids),
@@ -488,8 +493,11 @@ let dlt_data=[];
       return response.json();
     })
     .then(function (text) {
-    if(text.status === 'OK'){
+      console.log(text);
+      if(text.status === 'OK'){
          interviewer_table();
       }
+
     });
+
 };
