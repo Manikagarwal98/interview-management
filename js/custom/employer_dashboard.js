@@ -1,3 +1,5 @@
+let domain = "hr502.herokuapp.com";
+
 var header = document.getElementById("myDIV");
 var btns = header.getElementsByClassName("nav-item");
 for (var i = 0; i < btns.length; i++) {
@@ -107,7 +109,7 @@ headers: {
  authorization: "bearer " + localStorage.getItem("token")
 }
 };
-fetch("https://hr502.herokuapp.com/company/get/information",info)
+fetch("https://"+ domain +"/company/get/information",info)
  .then(function(response) {
    return response.json();
  }).then(function(text){
@@ -155,7 +157,7 @@ fetch("https://hr502.herokuapp.com/company/get/information",info)
       },
       body: JSON.stringify(ids),
     };
-    fetch("https://hr502.herokuapp.com/company/add/interviewer", opt)
+    fetch("https://"+ domain +"/company/add/interviewer", opt)
       .then(function (response) {
         return response.json();
       })
@@ -193,7 +195,7 @@ fetch("https://hr502.herokuapp.com/company/get/information",info)
       },
       body: JSON.stringify(details),
     };
-    fetch("https://hr502.herokuapp.com/addJobs", options)
+    fetch("https://"+ domain +"/addJobs", options)
       .then(function (response) {
         return response.json();
       })
@@ -230,7 +232,7 @@ function getJob() {
      method: "GET",
    };
    fetch(
-     "https://hr502.herokuapp.com/comapanyjobs" +
+     "https://"+ domain +"/comapanyjobs" +
        localStorage.getItem("companyId"),
      ddown
    )
@@ -270,7 +272,7 @@ dis1.classList.remove("open_applicant_data");
 const job_tb = {
   method: "GET",
 };
-fetch("https://hr502.herokuapp.com/comapanyjobs" + localStorage.getItem("companyId"),  job_tb)
+fetch("https://"+ domain +"/comapanyjobs" + localStorage.getItem("companyId"),  job_tb)
   .then(function (response) {
     return response.json();
   })
@@ -310,7 +312,7 @@ fetch("https://hr502.herokuapp.com/comapanyjobs" + localStorage.getItem("company
         authorization: "bearer " + localStorage.getItem("token"),
       },
     };
-    fetch("https://hr502.herokuapp.com/visiter", tbl)
+    fetch("https://"+ domain +"/visiter", tbl)
       .then(function (response) {
         return response.json();
       })
@@ -466,7 +468,7 @@ const intv_table = {
     authorization: "bearer " + localStorage.getItem("token"),
   },
 };
-fetch("https://hr502.herokuapp.com/company/get/interviewers", intv_table)
+fetch("https://"+ domain +"/company/get/interviewers", intv_table)
   .then(function (response) {
     return response.json();
   })
@@ -508,7 +510,7 @@ let dlt_data=[];
     },
     body: JSON.stringify(ids),
   };
-  fetch("https://hr502.herokuapp.com/company/delete/interviewer", opt)
+  fetch("https://"+ domain +"/company/delete/interviewer", opt)
     .then(function (response) {
       return response.json();
     })
