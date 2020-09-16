@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="qr.css">
+    <link rel="stylesheet" href="css/qr.css">
     <meta charset="utf-8">
     <title>Invite Page</title>
   </head>
@@ -14,9 +14,10 @@
     <div class="item"id="qrcode"></div>
     <div>
   </body>
-  <script src='qrcode.min.js'></script>
+  <script src='js/custom/qrcode.min.js'></script>
   <script>
-  let qrdata = (window.location.protocol + "//" + window.location.host + "/interview-management/candidate_reg.html?token=" + localStorage.getItem('companyId'));
+  var getToken = window.location.search.slice(1);
+  let qrdata = (window.location.protocol + "//" + window.location.host + "/interview-management/candidate_reg.html?" + getToken);
     var qrcode = new QRCode(document.getElementById('qrcode'));
     document.getElementById("link_address").innerHTML = qrdata;
       var data = qrdata;

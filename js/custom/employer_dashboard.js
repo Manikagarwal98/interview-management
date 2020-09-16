@@ -49,7 +49,7 @@ function show_CN(){
 }
 
 //redirect to invite page
-let invite_page = (window.location.protocol + "//" + window.location.host + "/interview-management/invite_page.html");
+let invite_page = (window.location.protocol + "//" + window.location.host + "/interview-management/invite_page.html?token=" + localStorage.getItem('companyId'));
  document.getElementById('invite_link').innerHTML = invite_page;
  function redirect() {
    window.location.href= invite_page;
