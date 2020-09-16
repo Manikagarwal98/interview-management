@@ -47,8 +47,7 @@ function show_CN(){
    b.classList.remove("active");
    c.classList.remove("active");
 }
-
-//redirect to invite page
+//----------------------redirect to invite page--------------------------------------
 let invite_page = (window.location.protocol + "//" + window.location.host + "/interview-management/invite_page.html?token=" + localStorage.getItem('companyId'));
  document.getElementById('invite_link').innerHTML = invite_page;
  function redirect() {
