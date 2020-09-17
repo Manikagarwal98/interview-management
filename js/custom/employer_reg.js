@@ -1,3 +1,8 @@
+//-----------------------------redirect to login page--------------------------------
+function emp_login(){
+var emp_log = (window.location.protocol + "//" + window.location.host + "/interview-management/employer_login.html");
+window.location.href = emp_log;
+}
 //to check password
     let domain = 'hr502.herokuapp.com';
          function checkPassword(form) {

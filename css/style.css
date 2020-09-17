@@ -58,8 +58,13 @@
     background: #0062cc;
     color: #fff;
     font-weight: 600;
-    width: 50%;
+    width: 200px;
     cursor: pointer;
+}
+.btnRegister:active {
+  background-color:  #0062cc;
+  transform: translateY(4px);
+  outline: none !important;
 }
 .register .nav-tabs{
     margin-top: 3%;
@@ -92,4 +97,7 @@
     margin-top: 8%;
     margin-bottom: -15%;
     color: #495057;
+}
+[type=submit]{
+  outline: none;
 }
